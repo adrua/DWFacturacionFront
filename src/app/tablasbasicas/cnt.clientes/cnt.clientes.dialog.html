@@ -1,0 +1,208 @@
+<div id="style_menu_desplegable" style="max-height: calc(120vh - 320px); padding: 0px; overflow: auto; margin:-24px">
+    <div style="padding: 0px; margin: 24px;">
+        <mat-card>
+            <mat-card-header>
+                <div class="d-flex align-items-center m-card">
+                    <mat-card-title class="mb-0">{{ 'cntClientes._titulo' | translate }}</mat-card-title>
+                    <span [ngStyle]="{'margin': 'auto'}" ></span>
+                    <mat-icon *ngIf="cntClientesForm.invalid" [matTooltip]="getErrorMessages()">error_outline</mat-icon>
+                    <mat-icon mat-dialog-close>close</mat-icon>
+                </div>
+            </mat-card-header>
+            <mat-card-content>
+                <form [formGroup]="cntClientesForm" (ngSubmit)="onSubmit(cntClientesForm.value)" autocomplete="off">
+                    <div class="dialog-content">
+                        <div class="row">
+                            <div class="col-sm-6 col-12">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>{{ 'cntClientes.ClienteId' | translate }}!</mat-label>
+                                    <input matInput type="number"
+                                            formControlName="ClienteId" />
+                                </mat-form-field>
+                                <mat-error *ngIf="cntClientesForm.controls.ClienteId.invalid && cntClientesForm.controls.ClienteId.touched">{{ "cntClientes.ClienteIdError" | translate }}</mat-error>
+                            </div>
+                            <div class="col-sm-6 col-12">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>{{ 'cntClientes.ClienteClasificacion' | translate }}:</mat-label>
+                                    <mat-select formControlName="ClienteClasificacion">
+                                        <mat-option value="Natural">{{ 'cntClientes.enumClienteClasificacion.Natural' | translate }}</mat-option>
+                                        <mat-option value="Juridica">{{ 'cntClientes.enumClienteClasificacion.Juridica' | translate }}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-error *ngIf="cntClientesForm.controls.ClienteClasificacion.invalid && cntClientesForm.controls.ClienteClasificacion.touched">{{ "cntClientes.ClienteClasificacionError" | translate }}</mat-error>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 col-12">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>{{ 'cntClientes.ClienteTipoID' | translate }}:</mat-label>
+                                    <mat-select formControlName="ClienteTipoID">
+                                        <mat-option value="Numero_Identificacion_Tributaria">{{ 'cntClientes.enumClienteTipoID.Numero_Identificacion_Tributaria' | translate }}</mat-option>
+                                        <mat-option value="Cedula_Ciudadania">{{ 'cntClientes.enumClienteTipoID.Cedula_Ciudadania' | translate }}</mat-option>
+                                        <mat-option value="Pasaporte">{{ 'cntClientes.enumClienteTipoID.Pasaporte' | translate }}</mat-option>
+                                        <mat-option value="Tarjeta_de_Identidad">{{ 'cntClientes.enumClienteTipoID.Tarjeta_de_Identidad' | translate }}</mat-option>
+                                        <mat-option value="Cedula_Extranjeria">{{ 'cntClientes.enumClienteTipoID.Cedula_Extranjeria' | translate }}</mat-option>
+                                        <mat-option value="Tarjeta_Extranjeria">{{ 'cntClientes.enumClienteTipoID.Tarjeta_Extranjeria' | translate }}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-error *ngIf="cntClientesForm.controls.ClienteTipoID.invalid && cntClientesForm.controls.ClienteTipoID.touched">{{ "cntClientes.ClienteTipoIDError" | translate }}</mat-error>
+                            </div>
+                            <div class="col-sm-6 col-12">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>{{ 'cntClientes.ClienteNit' | translate }}:</mat-label>
+                                    <input matInput type="text"
+                                            formControlName="ClienteNit" />
+                                </mat-form-field>
+                                <mat-error *ngIf="cntClientesForm.controls.ClienteNit.invalid && cntClientesForm.controls.ClienteNit.touched">{{ "cntClientes.ClienteNitError" | translate }}</mat-error>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 col-12">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>{{ 'cntClientes.CodigoCiiuDescripcion' | translate }}:({{cntClientesForm.controls.CodigoCiiuId?.value}})</mat-label>
+                                    <input matInput
+                                            autocomplete="off"
+                                            [matAutocomplete]="codigoCiiuDescripcion"
+                                            [formControl]="codigoCiiuDescripcionCtrl"
+                                            (keydown)="onKeydownCodigoCiiuDescripcion($event);" />
+                                </mat-form-field>
+                                <mat-autocomplete #codigoCiiuDescripcion="matAutocomplete"
+                                            [displayWith]="displayFnCodigoCiiuDescripcion">
+                                    <mat-option *ngFor="let opt of filteredCodigoCiiuDescripcion | async" 
+                                                [value]="opt">
+                                        {{ opt.CodigoCiiuDescripcion }}
+                                    </mat-option>
+                                </mat-autocomplete>
+                                <mat-error *ngIf="codigoCiiuDescripcionCtrl.invalid && codigoCiiuDescripcionCtrl.touched">{{ "CntClientes.CodigoCiiuDescripcionError" | translate }}</mat-error>
+                            </div>
+                            <div class="col-sm-6 col-12">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>{{ 'cntClientes.ClienteEstado' | translate }}:</mat-label>
+                                    <mat-select formControlName="ClienteEstado">
+                                        <mat-option value="Activo">{{ 'cntClientes.enumClienteEstado.Activo' | translate }}</mat-option>
+                                        <mat-option value="Anulado">{{ 'cntClientes.enumClienteEstado.Anulado' | translate }}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-error *ngIf="cntClientesForm.controls.ClienteEstado.invalid && cntClientesForm.controls.ClienteEstado.touched">{{ "cntClientes.ClienteEstadoError" | translate }}</mat-error>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-12">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>{{ 'cntClientes.ClienteRazonSocial' | translate }}:</mat-label>
+                                    <input matInput type="text"
+                                            formControlName="ClienteRazonSocial" />
+                                </mat-form-field>
+                                <mat-error *ngIf="cntClientesForm.controls.ClienteRazonSocial.invalid && cntClientesForm.controls.ClienteRazonSocial.touched">{{ "cntClientes.ClienteRazonSocialError" | translate }}</mat-error>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-12">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>{{ 'cntClientes.ClienteDireccion' | translate }}:</mat-label>
+                                    <input matInput type="text"
+                                            formControlName="ClienteDireccion" />
+                                </mat-form-field>
+                                <mat-error *ngIf="cntClientesForm.controls.ClienteDireccion.invalid && cntClientesForm.controls.ClienteDireccion.touched">{{ "cntClientes.ClienteDireccionError" | translate }}</mat-error>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-12">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>{{ 'cntClientes.CiudadNombreCiudad' | translate }}:({{cntClientesForm.controls.CiudadDepartamentoId?.value}}/{{cntClientesForm.controls.Ciudadid?.value}})</mat-label>
+                                    <input matInput
+                                            autocomplete="off"
+                                            [matAutocomplete]="ciudadNombreCiudad"
+                                            [formControl]="ciudadNombreCiudadCtrl"
+                                            (keydown)="onKeydownCiudadNombreCiudad($event);" />
+                                </mat-form-field>
+                                <mat-autocomplete #ciudadNombreCiudad="matAutocomplete"
+                                            [displayWith]="displayFnCiudadNombreCiudad">
+                                    <mat-option *ngFor="let opt of filteredCiudadNombreCiudad | async" 
+                                                [value]="opt">
+                                        {{ opt.CiudadNombreCiudad }}
+                                    </mat-option>
+                                </mat-autocomplete>
+                                <mat-error *ngIf="ciudadNombreCiudadCtrl.invalid && ciudadNombreCiudadCtrl.touched">{{ "CntClientes.CiudadNombreCiudadError" | translate }}</mat-error>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 col-12">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>{{ 'cntClientes.ClienteTelefono' | translate }}:</mat-label>
+                                    <input matInput type="text"
+                                            formControlName="ClienteTelefono" />
+                                </mat-form-field>
+                                <mat-error *ngIf="cntClientesForm.controls.ClienteTelefono.invalid && cntClientesForm.controls.ClienteTelefono.touched">{{ "cntClientes.ClienteTelefonoError" | translate }}</mat-error>
+                            </div>
+                            <div class="col-sm-6 col-12">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>{{ 'cntClientes.ClienteCelular' | translate }}:</mat-label>
+                                    <input matInput type="text"
+                                            formControlName="ClienteCelular" />
+                                </mat-form-field>
+                                <mat-error *ngIf="cntClientesForm.controls.ClienteCelular.invalid && cntClientesForm.controls.ClienteCelular.touched">{{ "cntClientes.ClienteCelularError" | translate }}</mat-error>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-12">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>{{ 'cntClientes.ClienteEmail' | translate }}:</mat-label>
+                                    <input matInput type="email"
+                                            formControlName="ClienteEmail" />
+                                </mat-form-field>
+                                <mat-error *ngIf="cntClientesForm.controls.ClienteEmail.invalid && cntClientesForm.controls.ClienteEmail.touched">{{ "cntClientes.ClienteEmailError" | translate }}</mat-error>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-12">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>{{ 'cntClientes.ClienteContacto' | translate }}?</mat-label>
+                                    <input matInput type="text"
+                                            formControlName="ClienteContacto" />
+                                </mat-form-field>
+                                <mat-error *ngIf="cntClientesForm.controls.ClienteContacto.invalid && cntClientesForm.controls.ClienteContacto.touched">{{ "cntClientes.ClienteContactoError" | translate }}</mat-error>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 col-12">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>{{ 'cntClientes.ClienteTelefonoContacto' | translate }}?</mat-label>
+                                    <input matInput type="text"
+                                            formControlName="ClienteTelefonoContacto" />
+                                </mat-form-field>
+                                <mat-error *ngIf="cntClientesForm.controls.ClienteTelefonoContacto.invalid && cntClientesForm.controls.ClienteTelefonoContacto.touched">{{ "cntClientes.ClienteTelefonoContactoError" | translate }}</mat-error>
+                            </div>
+                            <div class="col-sm-6 col-12">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>{{ 'cntClientes.ClienteEmailContacto' | translate }}?</mat-label>
+                                    <input matInput type="email"
+                                            formControlName="ClienteEmailContacto" />
+                                </mat-form-field>
+                                <mat-error *ngIf="cntClientesForm.controls.ClienteEmailContacto.invalid && cntClientesForm.controls.ClienteEmailContacto.touched">{{ "cntClientes.ClienteEmailContactoError" | translate }}</mat-error>
+                            </div>
+                    </div>
+                    </div>
+                </form>
+            </mat-card-content>
+            <mat-card-actions>
+                <mat-spinner *ngIf="_proc" [diameter]="30" class="mb-3 mx-auto"></mat-spinner>
+                <button mat-button
+                    (click)="onSubmit(cntClientesForm.value);"
+                    [disabled]="!cntClientesForm.valid">
+                    {{ "cntClientes._guardar" | translate  }}
+                </button>
+                <button mat-button *ngIf="originalCntClientes._estado === 'O'"
+                    (click)="onDelete(cntClientesForm.value);"
+                    [disabled]="!cntClientesForm.valid">
+                    {{ "cntClientes._eliminar" | translate  }}
+                </button>
+                <button
+                    mat-button
+                    mat-dialog-close>
+                    {{ "cntClientes._cancelar" | translate  }}
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

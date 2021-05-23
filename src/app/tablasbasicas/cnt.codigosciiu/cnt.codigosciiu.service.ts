@@ -72,7 +72,7 @@ export class CntCodigosCiiuService {
     }
 
     add(row: CntCodigosCiiuModel): Observable<CntCodigosCiiuModel> {
-        return this.http.post<CntCodigosCiiuModel>(this.cntCodigosCiiuUrl, CntCodigosCiiuModel.clone(row)).pipe(
+        return this.http.post<CntCodigosCiiuModel>(this.cntCodigosCiiuODataUrl, CntCodigosCiiuModel.clone(row)).pipe(
             retry(3),
             tap((_row: CntCodigosCiiuModel) => this.log(`added CntCodigosCiiu w/ id=${_row.CodigoCiiuId}`)),
             catchError((error) => this.handleError("addCntCodigosCiiu", error))

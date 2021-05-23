@@ -172,5 +172,63 @@
 		"_eliminar": "Eliminar",
 		"_cancelar": "Cancelar",
 		"_titulo": "CodigosCiiu.CNT"
+	},
+	"cntClientes": {
+		"ClienteId": "Id",
+		"ClienteIdError": "Id inválido",
+		"ClienteClasificacion": "Clasificacion",
+		"enumClienteClasificacion": {
+			"Natural": "Natural",
+			"Juridica": "Juridica"
+		},
+		"ClienteClasificacionError": "Clasificacion inválido",
+		"ClienteTipoID": "Tipo I D",
+		"enumClienteTipoID": {
+			"Numero_Identificacion_Tributaria": "Numero Identificacion Tributaria",
+			"Cedula_Ciudadania": "Cedula Ciudadania",
+			"Pasaporte": "Pasaporte",
+			"Tarjeta_de_Identidad": "Tarjeta de Identidad",
+			"Cedula_Extranjeria": "Cedula Extranjeria",
+			"Tarjeta_Extranjeria": "Tarjeta Extranjeria"
+		},
+		"ClienteTipoIDError": "Tipo I D inválido",
+		"ClienteNit": "Nit",
+		"ClienteNitError": "Nit inválido",
+		"CodigoCiiuId": "Codigo Ciiu",
+		"CodigoCiiuIdError": "Codigo Ciiu inválido",
+		"CodigoCiiuDescripcion": "Codigo Ciiu",
+		"CodigoCiiuDescripcionError": "Codigo Ciiu inválido",
+		"ClienteEstado": "Estado",
+		"enumClienteEstado": {
+			"Activo": "Activo",
+			"Anulado": "Anulado"
+		},
+		"ClienteEstadoError": "Estado inválido",
+		"ClienteRazonSocial": "Razon Social",
+		"ClienteRazonSocialError": "Razon Social inválido",
+		"ClienteDireccion": "Direccion",
+		"ClienteDireccionError": "Direccion inválido",
+		"CiudadDepartamentoId": "Ciudad",
+		"CiudadDepartamentoIdError": "Ciudad inválido",
+		"Ciudadid": "Ciudad",
+		"CiudadidError": "Ciudad inválido",
+		"CiudadNombreCiudad": "Ciudad",
+		"CiudadNombreCiudadError": "Ciudad inválido",
+		"ClienteTelefono": "Telefono",
+		"ClienteTelefonoError": "Telefono inválido",
+		"ClienteCelular": "Celular",
+		"ClienteCelularError": "Celular inválido",
+		"ClienteEmail": "Email",
+		"ClienteEmailError": "Email inválido",
+		"ClienteContacto": "Contacto",
+		"ClienteContactoError": "Contacto inválido",
+		"ClienteTelefonoContacto": "Telefono Contacto",
+		"ClienteTelefonoContactoError": "Telefono Contacto inválido",
+		"ClienteEmailContacto": "Email Contacto",
+		"ClienteEmailContactoError": "Email Contacto inválido",
+		"_guardar": "Salvar y Seguir",
+		"_eliminar": "Eliminar",
+		"_cancelar": "Cancelar",
+		"_titulo": "Clientes.CNT"
 	}
 }

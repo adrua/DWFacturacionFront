@@ -1,0 +1,247 @@
+<div class="mat-table-scroll" id="style_menu_desplegable">
+    <mat-table [dataSource]="rows" class="mat-elevation-z8" matSort [ngStyle]="{'width': 'auto'}">
+        <!-- Id! Column -->
+        <ng-container matColumnDef="clienteId">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ClienteId', 'Number', 'ClienteId', '!')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "cntClientes.ClienteId" | translate }}!</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.ClienteId}}</mat-cell>
+        </ng-container>
+
+        <!-- Clasificacion: Column -->
+        <ng-container matColumnDef="clienteClasificacion">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ClienteClasificacion', 'Number', 'ClienteClasificacion', ':')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "cntClientes.ClienteClasificacion" | translate }}:</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{ "cntClientes.enumClienteClasificacion." + row.ClienteClasificacion | translate }} </mat-cell>
+        </ng-container>
+
+        <!-- Tipo I D: Column -->
+        <ng-container matColumnDef="clienteTipoID">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ClienteTipoID', 'Number', 'ClienteTipoID', ':')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "cntClientes.ClienteTipoID" | translate }}:</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{ "cntClientes.enumClienteTipoID." + row.ClienteTipoID | translate }} </mat-cell>
+        </ng-container>
+
+        <!-- Nit: Column -->
+        <ng-container matColumnDef="clienteNit">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ClienteNit', 'Varchar', 'ClienteNit', ':')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "cntClientes.ClienteNit" | translate }}:</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.ClienteNit}}</mat-cell>
+        </ng-container>
+
+        <!-- Codigo Ciiu: Column -->
+        <ng-container matColumnDef="cntCodigosCiiu/codigoCiiuDescripcion">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'CodigoCiiuDescripcion', 'Varchar', 'CntCodigosCiiu/CodigoCiiuDescripcion', ':')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "cntClientes.CodigoCiiuDescripcion" | translate }}:</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.CntCodigosCiiu?.CodigoCiiuDescripcion}} </mat-cell>
+        </ng-container>
+
+        <!-- Estado: Column -->
+        <ng-container matColumnDef="clienteEstado">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ClienteEstado', 'Number', 'ClienteEstado', ':')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "cntClientes.ClienteEstado" | translate }}:</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{ "cntClientes.enumClienteEstado." + row.ClienteEstado | translate }} </mat-cell>
+        </ng-container>
+
+        <!-- Razon Social: Column -->
+        <ng-container matColumnDef="clienteRazonSocial">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ClienteRazonSocial', 'Varchar', 'ClienteRazonSocial', ':')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "cntClientes.ClienteRazonSocial" | translate }}:</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.ClienteRazonSocial}}</mat-cell>
+        </ng-container>
+
+        <!-- Direccion: Column -->
+        <ng-container matColumnDef="clienteDireccion">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ClienteDireccion', 'Varchar', 'ClienteDireccion', ':')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "cntClientes.ClienteDireccion" | translate }}:</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.ClienteDireccion}}</mat-cell>
+        </ng-container>
+
+        <!-- Ciudad: Column -->
+        <ng-container matColumnDef="cntCiudades/ciudadNombreCiudad">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'CiudadNombreCiudad', 'Varchar', 'CntCiudades/CiudadNombreCiudad', ':')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "cntClientes.CiudadNombreCiudad" | translate }}:</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.CntCiudades?.CiudadNombreCiudad}} </mat-cell>
+        </ng-container>
+
+        <!-- Telefono: Column -->
+        <ng-container matColumnDef="clienteTelefono">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ClienteTelefono', 'Varchar', 'ClienteTelefono', ':')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "cntClientes.ClienteTelefono" | translate }}:</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.ClienteTelefono}}</mat-cell>
+        </ng-container>
+
+        <!-- Celular: Column -->
+        <ng-container matColumnDef="clienteCelular">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ClienteCelular', 'Varchar', 'ClienteCelular', ':')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "cntClientes.ClienteCelular" | translate }}:</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.ClienteCelular}}</mat-cell>
+        </ng-container>
+
+        <!-- Email: Column -->
+        <ng-container matColumnDef="clienteEmail">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ClienteEmail', 'Varchar', 'ClienteEmail', ':')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "cntClientes.ClienteEmail" | translate }}:</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.ClienteEmail}}</mat-cell>
+        </ng-container>
+
+        <!-- Contacto? Column -->
+        <ng-container matColumnDef="clienteContacto">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ClienteContacto', 'Varchar', 'ClienteContacto', '?')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "cntClientes.ClienteContacto" | translate }}?</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.ClienteContacto}}</mat-cell>
+        </ng-container>
+
+        <!-- Telefono Contacto? Column -->
+        <ng-container matColumnDef="clienteTelefonoContacto">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ClienteTelefonoContacto', 'Varchar', 'ClienteTelefonoContacto', '?')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "cntClientes.ClienteTelefonoContacto" | translate }}?</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.ClienteTelefonoContacto}}</mat-cell>
+        </ng-container>
+
+        <!-- Email Contacto? Column -->
+        <ng-container matColumnDef="clienteEmailContacto">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ClienteEmailContacto', 'Varchar', 'ClienteEmailContacto', '?')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "cntClientes.ClienteEmailContacto" | translate }}?</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.ClienteEmailContacto}}</mat-cell>
+        </ng-container>
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns" class="sticky"></mat-header-row>
+        <mat-row *matRowDef="let row; let even = even; let index = index; columns: displayedColumns; " 
+            [ngClass]="{'alternate-row-color': even, 'mat-row-select': row === selectedRow}"
+            (click)="onSelect($event, row, index);" 
+            (dblclick)="onSelectAndEdit($event, row, index);"></mat-row>
+        <mat-menu #menuSearch>
+            <div mat-menu-item mat-filter-item [disableRipple]="true" class="menu-title">
+                {{  "cntClientes." + selectedColumn.name | translate }}
+            </div>
+            <div mat-menu-item mat-filter-item [disableRipple]="true">
+                <mat-form-field (click)="$event.stopPropagation()">
+                <mat-select [panelClass]="'mat-elevation-z10'" placeholder="{{ 'CONDITIONS_LIST.conditions' | translate }}" [(value)]="searchCondition[selectedColumn.name]">
+                    <mat-option *ngFor="let condition of selectedColumn.filter" [value]="condition">{{condition.label}}</mat-option>
+                </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div mat-menu-item mat-filter-item [disableRipple]="true" [ngSwitch]="selectedColumn.type">
+                <mat-form-field (click)="$event.stopPropagation()" *ngSwitchCase="'Date'">
+                    <!--Date-->
+                    <input matInput 
+                        [matDatepicker]="menuSearchDate" 
+                        displayFormat="MMM DD/YYYY"
+                        placeholder="{{ 'CONDITIONS_LIST.value' | translate }}"
+                        [(ngModel)]="searchValue[selectedColumn.name]">
+                    <mat-datepicker-toggle matSuffix [for]="menuSearchDate"></mat-datepicker-toggle>
+                    <mat-datepicker #menuSearchDate></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field (click)="$event.stopPropagation()" *ngSwitchCase="'Boolean'">
+                    <!--Boolean-->
+                    <mat-select matInput type="text" [(value)]="searchValue[selectedColumn.name]"  placeholder="{{ 'CONDITIONS_LIST.value' | translate }}" >
+                        <mat-option [value]="true">{{ 'Main._activo' | translate }}</mat-option>
+                        <mat-option [value]="false">{{ 'Main._inactivo' | translate }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field (click)="$event.stopPropagation()" *ngSwitchDefault>
+                    <!--Number, Varchar-->
+                    <input matInput  *ngSwitchDefault
+                        placeholder="{{ 'CONDITIONS_LIST.value' | translate }}" 
+                        [(ngModel)]="searchValue[selectedColumn.name]">
+                </mat-form-field>
+            </div>
+
+            <div mat-menu-item mat-filter-item [disableRipple]="true">
+                <button mat-raised-button (click)="onClearColumn($event)">{{ 'CONDITIONS_LIST.clear' | translate }}</button>
+                <button mat-raised-button color="primary" (click)="onApplyFilter($event)">{{ 'CONDITIONS_LIST.search' | translate }}</button>
+            </div>
+        </mat-menu>
+    </mat-table>
+</div>    
+<mat-toolbar class="mat-toolbar-opc">
+    <mat-toolbar-row>
+        <mat-icon (click)="onAdd()" title="{{ 'Main._addRow' | translate }}">add</mat-icon>
+        <mat-icon (click)="onEdit()" title="{{ 'Main._editRow' | translate }}">edit</mat-icon>
+        <mat-icon (click)="onRefresh()" title="{{ 'Main._refreshTable' | translate }}">refresh</mat-icon>
+        <mat-icon (click)="onExportExcel($event)" title="{{ 'Main._exportCSV' | translate }}">save_alt</mat-icon>
+        <span class="example-spacer"></span>
+        <mat-paginator #paginator
+                class="paginator" 
+                [length]="resultsLength" 
+                [pageSize]="_pageSize" 
+                [pageSizeOptions]="[5, 10, 25, 100]">
+        </mat-paginator>
+        <div class="mat-paginator" *ngIf="paginator.length > paginator.pageSize">
+            <mat-label>{{ 'PAGINATOR.pageLabel' | translate }} </mat-label>
+            <mat-slider
+                min="0"
+                [max]="(paginator.length / paginator.pageSize).toFixed()"
+                [displayWith]="formatPageLabel"
+                step="1"
+                [(ngModel)]="pageIndex"
+                thumbLabel></mat-slider>
+        </div>
+        <div *ngIf="isLoadingResults" class="ml-2 row">
+            <mat-spinner [diameter]="30"></mat-spinner>
+            <span class="ml-2" style="font-size: 12px">Loading...</span>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>

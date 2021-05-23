@@ -143,16 +143,34 @@
 		"_mensajeEliminarGrupoAcademico": "Se eliminará el grupo académico seleccionado del sistema. ¿Desea continuar?",
 		"_mensajeEliminarProgramaAcademico": "Se eliminará el programa académico seleccionado del sistema. ¿Desea continuar?"
 	},
-    "cntBancos" : {
-        "BancoId" : "Id",
-        "BancoIdError" : "Id inválido", 
-        "BancoNombre" : "Nombre",
-        "BancoNombreError" : "Nombre inválido", 
-        "BancoLongitud" : "Longitud",
-        "BancoLongitudError" : "Longitud inválido", 
-        "_guardar" : "Salvar y Seguir",
-        "_eliminar" : "Eliminar",
-        "_cancelar" : "Cancelar",
-        "_titulo" : "Bancos.CNT"
-    }
+	"cntBancos": {
+		"BancoId": "Id",
+		"BancoIdError": "Id inválido",
+		"BancoNombre": "Nombre",
+		"BancoNombreError": "Nombre inválido",
+		"BancoLongitud": "Longitud",
+		"BancoLongitudError": "Longitud inválido",
+		"_guardar": "Salvar y Seguir",
+		"_eliminar": "Eliminar",
+		"_cancelar": "Cancelar",
+		"_titulo": "Bancos.CNT"
+	},
+	"cntCodigosCiiu": {
+		"CodigoCiiuId": "Id",
+		"CodigoCiiuIdError": "Id inválido",
+		"CodigoCiiuDescripcion": "Descripcion",
+		"CodigoCiiuDescripcionError": "Descripcion inválido",
+		"CodigoCiiuclase": "clase",
+		"CodigoCiiuclaseError": "clase inválido",
+		"CodigoCiiugrupo": "grupo",
+		"CodigoCiiugrupoError": "grupo inválido",
+		"CodigoCiiudivision": "division",
+		"CodigoCiiudivisionError": "division inválido",
+		"CodigoCiiuBloqueo": "Bloqueo",
+		"CodigoCiiuBloqueoError": "Bloqueo inválido",
+		"_guardar": "Salvar y Seguir",
+		"_eliminar": "Eliminar",
+		"_cancelar": "Cancelar",
+		"_titulo": "CodigosCiiu.CNT"
+	}
 }

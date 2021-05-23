@@ -34,8 +34,8 @@ export class FuncionalidadesService {
               },
               {
                 "id": 261,
-                "name": "COLMAG_Personajes", 
-                "descripcion": "Personajes",
+                "name": "CNT_CodigosCiiu", 
+                "descripcion": "Codigos Ciiu",
                 "check": true,
                 "children": []
               },

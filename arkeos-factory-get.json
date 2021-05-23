@@ -1,0 +1,10 @@
+{
+    "urlArkeosFactoryBackend": "https://arkeos.multiclicksistemas.net",
+    "urlArkeosApiBackend": "https://arkeos-api.multiclicksistemas.net",
+    "rootPath": ".",
+    "rootPathBack": "../cxc-back",
+    "rootPathBackCode": "../cxc-back/cxc-back",
+    "rootPathBackTest": "../cxc-back/cxc-back.Testing",
+    "destination": "NG11ODataCore5",
+    "token": "3GqJ4ymXezQ/mhkmJImXWw=="
+}

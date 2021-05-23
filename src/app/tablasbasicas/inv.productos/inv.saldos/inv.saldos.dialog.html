@@ -1,0 +1,96 @@
+<div id="style_menu_desplegable" style="max-height: calc(120vh - 320px); padding: 0px; overflow: auto; margin:-24px">
+    <div style="padding: 0px; margin: 24px;">
+        <mat-card>
+            <mat-card-header>
+                <div class="d-flex align-items-center m-card">
+                    <mat-card-title class="mb-0">{{ 'invSaldos._titulo' | translate }}</mat-card-title>
+                    <span [ngStyle]="{'margin': 'auto'}" ></span>
+                    <mat-icon *ngIf="invSaldosForm.invalid" [matTooltip]="getErrorMessages()">error_outline</mat-icon>
+                    <mat-icon mat-dialog-close>close</mat-icon>
+                </div>
+            </mat-card-header>
+            <mat-card-content>
+                <form [formGroup]="invSaldosForm" (ngSubmit)="onSubmit(invSaldosForm.value)" autocomplete="off">
+                    <div class="dialog-content">
+                        <div class="row">
+                            <div class="col-sm-1 col-12">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>{{ 'invSaldos.PeriodoDescripcionx' | translate }}!</mat-label>
+                                    <input matInput type="text"
+                                            formControlName="PeriodoDescripcionx" />
+                                </mat-form-field>
+                                <mat-error *ngIf="invSaldosForm.controls.PeriodoDescripcionx.invalid && invSaldosForm.controls.PeriodoDescripcionx.touched">{{ "invSaldos.PeriodoDescripcionxError" | translate }}</mat-error>
+                            </div>
+                            <div class="col-sm-1 col-12">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>{{ 'invSaldos.InvSaldosCantidad' | translate }}:</mat-label>
+                                    <input matInput type="number"
+                                            formControlName="InvSaldosCantidad" />
+                                </mat-form-field>
+                                <mat-error *ngIf="invSaldosForm.controls.InvSaldosCantidad.invalid && invSaldosForm.controls.InvSaldosCantidad.touched">{{ "invSaldos.InvSaldosCantidadError" | translate }}</mat-error>
+                            </div>
+                            <div class="col-sm-1 col-12">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>{{ 'invSaldos.InvSaldosValor' | translate }}:</mat-label>
+                                    <input matInput type="number"
+                                            formControlName="InvSaldosValor" />
+                                </mat-form-field>
+                                <mat-error *ngIf="invSaldosForm.controls.InvSaldosValor.invalid && invSaldosForm.controls.InvSaldosValor.touched">{{ "invSaldos.InvSaldosValorError" | translate }}</mat-error>
+                            </div>
+                            <div class="col-sm-1 col-12">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>{{ 'invSaldos.InvSaldosTotal' | translate }}=</mat-label>
+                                    <input matInput type="number" readonly
+                                            formControlName="InvSaldosTotal" />
+                                </mat-form-field>
+                                <mat-error *ngIf="invSaldosForm.controls.InvSaldosTotal.invalid && invSaldosForm.controls.InvSaldosTotal.touched">{{ "invSaldos.InvSaldosTotalError" | translate }}</mat-error>
+                            </div>
+                            <div class="col-sm-1 col-12">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>{{ 'invSaldos.InvSaldosValorPromedio' | translate }}=</mat-label>
+                                    <input matInput type="number" readonly
+                                            formControlName="InvSaldosValorPromedio" />
+                                </mat-form-field>
+                                <mat-error *ngIf="invSaldosForm.controls.InvSaldosValorPromedio.invalid && invSaldosForm.controls.InvSaldosValorPromedio.touched">{{ "invSaldos.InvSaldosValorPromedioError" | translate }}</mat-error>
+                            </div>
+                            <div class="col-sm-1 col-12">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>{{ 'invSaldos.InvSaldosUltimoValor' | translate }}=</mat-label>
+                                    <input matInput type="number" readonly
+                                            formControlName="InvSaldosUltimoValor" />
+                                </mat-form-field>
+                                <mat-error *ngIf="invSaldosForm.controls.InvSaldosUltimoValor.invalid && invSaldosForm.controls.InvSaldosUltimoValor.touched">{{ "invSaldos.InvSaldosUltimoValorError" | translate }}</mat-error>
+                            </div>
+                            <div class="col-sm-1 col-12">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>{{ 'invSaldos.InvSaldosMaximoValor' | translate }}=</mat-label>
+                                    <input matInput type="number" readonly
+                                            formControlName="InvSaldosMaximoValor" />
+                                </mat-form-field>
+                                <mat-error *ngIf="invSaldosForm.controls.InvSaldosMaximoValor.invalid && invSaldosForm.controls.InvSaldosMaximoValor.touched">{{ "invSaldos.InvSaldosMaximoValorError" | translate }}</mat-error>
+                            </div>
+                    </div>
+                    </div>
+                </form>
+            </mat-card-content>
+            <mat-card-actions>
+                <mat-spinner *ngIf="_proc" [diameter]="30" class="mb-3 mx-auto"></mat-spinner>
+                <button mat-button
+                    (click)="onSubmit(invSaldosForm.value);"
+                    [disabled]="!invSaldosForm.valid">
+                    {{ "invSaldos._guardar" | translate  }}
+                </button>
+                <button mat-button *ngIf="originalinvSaldos._estado === 'O'"
+                    (click)="onDelete(invSaldosForm.value);"
+                    [disabled]="!invSaldosForm.valid">
+                    {{ "invSaldos._eliminar" | translate  }}
+                </button>
+                <button
+                    mat-button
+                    mat-dialog-close>
+                    {{ "invSaldos._cancelar" | translate  }}
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

@@ -76,7 +76,7 @@ export class CntClientesService {
     }
 
     add(row: CntClientesModel): Observable<CntClientesModel> {
-        return this.http.post<CntClientesModel>(this.cntClientesUrl, CntClientesModel.clone(row)).pipe(
+        return this.http.post<CntClientesModel>(this.cntClientesODataUrl, CntClientesModel.clone(row)).pipe(
             retry(3),
             tap((_row: CntClientesModel) => this.log(`added CntClientes w/ id=${_row.ClienteId}`)),
             catchError((error) => this.handleError("addCntClientes", error))

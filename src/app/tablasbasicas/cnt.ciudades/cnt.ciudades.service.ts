@@ -72,7 +72,7 @@ export class CntCiudadesService {
     }
 
     add(row: CntCiudadesModel): Observable<CntCiudadesModel> {
-        return this.http.post<CntCiudadesModel>(this.cntCiudadesUrl, CntCiudadesModel.clone(row)).pipe(
+        return this.http.post<CntCiudadesModel>(this.cntCiudadesODataUrl, CntCiudadesModel.clone(row)).pipe(
             retry(3),
             tap((_row: CntCiudadesModel) => this.log(`added CntCiudades w/ id=${_row.CiudadDepartamentoId}`)),
             catchError((error) => this.handleError("addCntCiudades", error))

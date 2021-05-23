@@ -41,15 +41,15 @@ export class FuncionalidadesService {
               },
               {
                 "id": 271,
-                "name": "COLMAG_Estudiantes", 
-                "descripcion": "Estudiantes",
+                "name": "CNTCiudades", 
+                "descripcion": "Ciudades",
                 "check": true,
                 "children": []
               },
               {
                 "id": 281,
-                "name": "COLMAG_Profesores", 
-                "descripcion": "Profesores",
+                "name": "CNTClientes", 
+                "descripcion": "Clientes",
                 "check": true,
                 "children": []
               }

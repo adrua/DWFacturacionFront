@@ -1,0 +1,158 @@
+{
+	"CONDITIONS_LIST": {
+		"conditions": "Filtro",
+		"value": "Valor",
+		"clear": "Limpiar",
+		"search": "Filtrar"
+	},
+	"CONDITIONS_LIST_VARCHAR": {
+		"like": "Contiene",
+		"not like": "No Contiene",
+		"Eq": "Es igual",
+		"Ne": "Es diferente"
+	},
+	"CONDITIONS_LIST_NUMBER": {
+		"Gt": "Mayor",
+		"Ge": "Mayor o igual",
+		"Lt": "Menor",
+		"Le": "Menor o igual",
+		"Eq": "Es igual",
+		"Ne": "Es diferente"
+	},
+	"CONDITIONS_LIST_DATE": {
+		"Gt": "Mayor",
+		"Ge": "Mayor o igual",
+		"Lt": "Menor",
+		"Le": "Menor o igual",
+		"Eq": "Es igual",
+		"Ne": "Es diferente"
+	},
+	"CONDITIONS_LIST_BOOLEAN": {
+		"Eq": "Es igual",
+		"Ne": "Es diferente"
+	},
+	"PAGINATOR": {
+		"pageLabel": "Pagina:",
+		"itemsPerPageLabel": "Items por pagina:",
+		"nextPageLabel": "Siguiente pagina",
+		"previousPageLabel": "Pagina Anterior",
+		"firstPageLabel": "Primera pagina",
+		"lastPageLabel": "Ultima pagina",
+		"getRangeLabel": "de"
+	},
+	"Main": {
+		"_idioma": "Idioma",
+		"_filtro": "Filtro",
+		"_inicio": "Inicio",
+		"_addRow": "Agregar fila",
+		"_editRow": "Modificar fila",
+		"_deleteRow": "Eliminar fila",
+		"_refreshTable": "Actualizar datos",
+		"_exportCSV": "Exportar datos en formato separados por coma",
+		"_itemsPerPageLabel": "Filas por pagina",
+		"_alerta": "Alerta por Crisis",
+		"_copyRows": "Copiar Filas",
+		"_pasteRows": "Pegar Filas",
+		"_uiMensaje": "Cargando...",
+		"_aceptar": "Aceptar",
+		"_cancelar": "Cancelar",
+		"_noData": "No hay información para mostrar",
+		"_activo": "Activo",
+		"_inactivo": "Inactivo"
+	},
+	"home": {
+		"_search": "Buscar modulo",
+		"_miLog": "Mi Log",
+		"_cambiarClave": "Cambiar Clave",
+		"_misAlertas": "Mis Alertas",
+		"_cerrarSesion": "Cerrar Sesión"
+	},
+	"login": {
+		"username": "Usuario",
+		"usernameError": "Usuario inválido",
+		"password": "Clave",
+		"passwordError": "Clave inválida",
+		"correoUsuario": "Correo Electrónico",
+		"correoUsuarioError": "Correo Electrónico inválido",
+		"oldPassword": "Clave Actual",
+		"oldPasswordError": "Clave Actual inválida",
+		"newPassword": "Clave Nueva",
+		"newPasswordError": "Clave Nueva Inválida",
+		"validarNewPassword": "Clave Nueva Confirmación",
+		"validarNewPasswordError": "Clave Nueva Confirmación Inválida",
+		"mensajeRecuperacion": "Se enviará un mensaje al correo electrónico ingresado con la nueva clave",
+		"_cambiarClave": "Cambiar Clave",
+		"_guardar": "Ingresar",
+		"_registrar": "Registrar",
+		"_enviarCorreo": "Enviar Correo",
+		"_cancelar": "Cancelar",
+		"_regresar": "Regresar",
+		"_tituloRecuperar": "Recuperar Clave",
+		"_tituloCambioClave": "Cambio de Clave",
+		"_titulo": "Inicio de Sesión",
+		"_olvido": "Recuperar clave"
+	},
+	"recuperarClave": {
+		"nuevaClave": "Nueva Clave",
+		"nuevaClaveError": "Nueva Clave Inválida",
+		"confirmacionClave": "Confirmación Clave",
+		"confirmacionClaveError": "Confirmación Clave Inválida",
+		"_registrar": "Registrar",
+		"_cancelar": "Cancelar",
+		"_titulo": "Recuperación Clave"
+	},
+	"navMenu": {
+		"modulo": "Módulo",
+		"grupos": "Grupos",
+		"funcionalidades": "Funcionalidades"
+	},
+	"busqueda": {
+		"ESAPBOGFuncionalidadesNombre": "Funcionalidad",
+		"ESAPBOGFuncionalidadesNombreError": "Funcionalidad Inválida",
+		"ESAPBOGGrupoNombre": "Grupo",
+		"ESAPBOGModuloNombre": "Modulo",
+		"_buscar": "Buscar",
+		"_cancelar": "Cancelar",
+		"_titulo": "Panel de búsqueda"
+	},
+	"alertasBotones": {
+		"aceptar": "Aceptar",
+		"regresar": "Regresar",
+		"continuar": "Continuar",
+		"cancelar": "Cancelar"
+	},
+	"alertas": {
+		"_mensajeNoData": "No hay registros para descargar.",
+		"_mensajeEliminar": "¿Está seguro de eliminar el registro seleccionado?",
+		"_mensajeSelectRow": "Seleccione un registro para editar",
+		"_mensajeSelectGrupo": "Seleccione un grupo para eliminar",
+		"_mensajePermisosRol": "Cambios no guardados, ¿Desea guardar cambios?",
+		"_mensajeConfirmacionExcel": "¿Está seguro de procesar el archivo seleccionado?",
+		"_mensajeConfirmacionProcesoDistribucion": "¿Está seguro de realizar el proceso?",
+		"_mensajeEliminarGrupoPlanTrabajo": "¿Está seguro de eliminar el grupo seleccionado?",
+		"_mensajeEliminarProgramaRevisor": "¿Está seguro de eliminar el permiso?",
+		"_mensajeAprobacionPlanTrabajo": "Se enviará el plan de trabajo a revisión. ¿Desea continuar?",
+		"_mensajeAprobacionAsignacion": "Se realizará la aprobación de estas actividades para el docente. ¿Desea continuar?",
+		"_mensajeRechazoAsignacion": "Se realizará el rechazo de estas actividades para el docente. ¿Desea continuar?",
+		"_mensajeAnulacionAsignacion": "Se realizará la anulación de estas actividades para el docente. ¿Desea continuar?",
+		"_mensajeAprobacionPreasignacion": "Se realizará la aprobación de estas actividades para el docente. ¿Desea continuar?",
+		"_mensajeRechazoPreasignacion": "Se realizará el rechazo de estas actividades para el docente. ¿Desea continuar?",
+		"_mensajeEliminacionPreasigCatedratico": "Se eliminará la preasignación seleccionada. ¿Desea continuar?",
+		"_mensajeCerrarPreasignaciones": "Se cerrarán las preasignaciones y enviarán a aprobación por parte de la facultad. ¿Desea continuar?",
+		"_mensajeAnularPeriodoAcademico": "Se anulará la vinculación del docente de cátedra. ¿Desea continuar?",
+		"_mensajeEliminarGrupoAcademico": "Se eliminará el grupo académico seleccionado del sistema. ¿Desea continuar?",
+		"_mensajeEliminarProgramaAcademico": "Se eliminará el programa académico seleccionado del sistema. ¿Desea continuar?"
+	},
+    "cntBancos" : {
+        "BancoId" : "Id",
+        "BancoIdError" : "Id inválido", 
+        "BancoNombre" : "Nombre",
+        "BancoNombreError" : "Nombre inválido", 
+        "BancoLongitud" : "Longitud",
+        "BancoLongitudError" : "Longitud inválido", 
+        "_guardar" : "Salvar y Seguir",
+        "_eliminar" : "Eliminar",
+        "_cancelar" : "Cancelar",
+        "_titulo" : "Bancos.CNT"
+    }
+}

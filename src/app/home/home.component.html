@@ -1,0 +1,80 @@
+<!-- Navbar -->
+<navbar-component></navbar-component>
+
+<mat-sidenav-container autosize class="sidenav-content">
+
+  <!-- Menu -->
+  <mat-sidenav #sidenav mode="side" [(opened)]=opened class="sidenav">
+    
+    <!-- Opciones -->
+    <mat-nav-list class="menu_desplegable" id="style_menu_desplegable" style="width: inherit">
+
+      <!-- Modulos -->
+      <ng-template ngFor let-modulo [ngForOf]="modulos">
+        <mat-list-item (click)="onSelectModulo(modulo)" [ngClass]="modulo.name == modNombre ? 'mat-item-sel' : 'mat-item-nosel'">
+          <img mat-flat-button [src]="'../assets/images/' + modulo.name + '.png'" class="img list-modules" />
+          <span class="lt-concrete pr-2">{{ modulo.name }}</span>
+          <mat-icon class="mat-icon-flecha" [ngClass]="modulo.grupoShow ? 'efecto-rotf' : 'efecto-rotb'">keyboard_arrow_down</mat-icon>
+        </mat-list-item>
+
+        <!-- Grupos -->
+        <mat-nav-list *ngIf="_grupo && modulo.name == modNombre">
+          <ng-template ngFor let-grupo [ngForOf]="grupos">
+            <mat-list-item (click)="onSelectGrupo(grupo);" [ngClass]="grupo.name == grupoNombre ? 'mat-item-sel' : 'mat-item-nosel'" style="padding-left: 25px; padding-right: 20px;">{{ grupo.descripcion }}</mat-list-item>
+            
+            <!-- Funcionalidades -->
+            <mat-nav-list *ngIf="_funcionalidad && grupo.name == grupoNombre">
+              <ng-template ngFor let-funcionalidad [ngForOf]="funcionalidades">
+                <mat-list-item (click)="onSelectFuncionalidad(modulo, grupo, funcionalidad);" [ngClass]="funcionalidad.name == funcNombre ? 'mat-item-sel' : 'mat-item-nosel'" style="padding-left: 40px; padding-right: 20px;">{{ funcionalidad.descripcion }}</mat-list-item>
+              </ng-template>
+            </mat-nav-list>
+
+          </ng-template>
+        </mat-nav-list>
+      </ng-template>
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+  <!-- Contenido -->
+  <mat-sidenav-content>
+    
+    <!-- Navbar -->
+    <mat-toolbar class="sticky-top" style="z-index: 10000; min-height: 46px !important;">
+      <mat-toolbar-row class="bg-color-gold wh">
+        
+        <mat-icon (click)="onCambiarIconoMenu()" class="mr-1 wh" style="cursor: pointer;">{{ tipoLogoMenu }}</mat-icon>
+        <span *ngIf="!isMenu" (click)="onVolverMenu()" class="text-sc">{{ modDescripcion }} > {{ grupoDescripcion }} ></span>
+        <h3 *ngIf="!isMenu" (click)="onVolverMenu()" class="text-pr">{{ funcDescripcion }}</h3>
+
+        <span class="space"></span>
+        <mat-icon (click)="onBusqueda()" class="wh">search</mat-icon>
+        <mat-divider [vertical]="true" class="divider"></mat-divider>
+        <button mat-button style="padding: 0 !important;" [matMenuTriggerFor]="menuUser">
+          <span class="mx-2">{{ usuario.given_name }}</span>
+          <mat-icon>keyboard_arrow_down</mat-icon>
+        </button>
+        
+        <!-- Menu Usuario -->
+        <mat-menu #menuUser="matMenu">
+          <button mat-menu-item (click)="onCambiarClave()">
+            <mat-icon>person_outline</mat-icon>
+            <span>{{ 'home._cambiarClave' | translate }}</span>
+          </button>
+          <mat-divider></mat-divider>
+          <button mat-menu-item (click)="onCerrarSesion();">
+            <mat-icon>power_settings_new</mat-icon>
+            <span>{{ 'home._cerrarSesion' | translate }}</span>
+          </button>
+        </mat-menu>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+    <!-- Router -->
+    <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<!-- Footer -->
+<footer-component></footer-component>

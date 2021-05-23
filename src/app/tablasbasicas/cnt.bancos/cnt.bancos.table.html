@@ -1,0 +1,104 @@
+<div class="mat-table-scroll" id="style_menu_desplegable">
+    <mat-table [dataSource]="rows" class="mat-elevation-z8" matSort [ngStyle]="{'width': 'auto'}">
+        <!-- Nombre: Column -->
+        <ng-container matColumnDef="bancoNombre">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'BancoNombre', 'Varchar', 'BancoNombre', ':')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "cntBancos.BancoNombre" | translate }}:</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.BancoNombre}}</mat-cell>
+        </ng-container>
+
+        <!-- Longitud: Column -->
+        <ng-container matColumnDef="bancoLongitud">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'BancoLongitud', 'Number', 'BancoLongitud', ':')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "cntBancos.BancoLongitud" | translate }}:</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.BancoLongitud}}</mat-cell>
+        </ng-container>
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns" class="sticky"></mat-header-row>
+        <mat-row *matRowDef="let row; let even = even; let index = index; columns: displayedColumns; " 
+            [ngClass]="{'alternate-row-color': even, 'mat-row-select': row === selectedRow}"
+            (click)="onSelect($event, row, index);" 
+            (dblclick)="onSelectAndEdit($event, row, index);"></mat-row>
+        <mat-menu #menuSearch>
+            <div mat-menu-item mat-filter-item [disableRipple]="true" class="menu-title">
+                {{  "cntBancos." + selectedColumn.name | translate }}
+            </div>
+            <div mat-menu-item mat-filter-item [disableRipple]="true">
+                <mat-form-field (click)="$event.stopPropagation()">
+                <mat-select [panelClass]="'mat-elevation-z10'" placeholder="{{ 'CONDITIONS_LIST.conditions' | translate }}" [(value)]="searchCondition[selectedColumn.name]">
+                    <mat-option *ngFor="let condition of selectedColumn.filter" [value]="condition">{{condition.label}}</mat-option>
+                </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div mat-menu-item mat-filter-item [disableRipple]="true" [ngSwitch]="selectedColumn.type">
+                <mat-form-field (click)="$event.stopPropagation()" *ngSwitchCase="'Date'">
+                    <!--Date-->
+                    <input matInput 
+                        [matDatepicker]="menuSearchDate" 
+                        displayFormat="MMM DD/YYYY"
+                        placeholder="{{ 'CONDITIONS_LIST.value' | translate }}"
+                        [(ngModel)]="searchValue[selectedColumn.name]">
+                    <mat-datepicker-toggle matSuffix [for]="menuSearchDate"></mat-datepicker-toggle>
+                    <mat-datepicker #menuSearchDate></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field (click)="$event.stopPropagation()" *ngSwitchCase="'Boolean'">
+                    <!--Boolean-->
+                    <mat-select matInput type="text" [(value)]="searchValue[selectedColumn.name]"  placeholder="{{ 'CONDITIONS_LIST.value' | translate }}" >
+                        <mat-option [value]="true">{{ 'Main._activo' | translate }}</mat-option>
+                        <mat-option [value]="false">{{ 'Main._inactivo' | translate }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field (click)="$event.stopPropagation()" *ngSwitchDefault>
+                    <!--Number, Varchar-->
+                    <input matInput  *ngSwitchDefault
+                        placeholder="{{ 'CONDITIONS_LIST.value' | translate }}" 
+                        [(ngModel)]="searchValue[selectedColumn.name]">
+                </mat-form-field>
+            </div>
+
+            <div mat-menu-item mat-filter-item [disableRipple]="true">
+                <button mat-raised-button (click)="onClearColumn($event)">{{ 'CONDITIONS_LIST.clear' | translate }}</button>
+                <button mat-raised-button color="primary" (click)="onApplyFilter($event)">{{ 'CONDITIONS_LIST.search' | translate }}</button>
+            </div>
+        </mat-menu>
+    </mat-table>
+</div>    
+<mat-toolbar class="mat-toolbar-opc">
+    <mat-toolbar-row>
+        <mat-icon (click)="onAdd()" title="{{ 'Main._addRow' | translate }}">add</mat-icon>
+        <mat-icon (click)="onEdit()" title="{{ 'Main._editRow' | translate }}">edit</mat-icon>
+        <mat-icon (click)="onRefresh()" title="{{ 'Main._refreshTable' | translate }}">refresh</mat-icon>
+        <mat-icon (click)="onExportExcel($event)" title="{{ 'Main._exportCSV' | translate }}">save_alt</mat-icon>
+        <span class="example-spacer"></span>
+        <mat-paginator #paginator
+                class="paginator" 
+                [length]="resultsLength" 
+                [pageSize]="_pageSize" 
+                [pageSizeOptions]="[5, 10, 25, 100]">
+        </mat-paginator>
+        <div class="mat-paginator" *ngIf="paginator.length > paginator.pageSize">
+            <mat-label>{{ 'PAGINATOR.pageLabel' | translate }} </mat-label>
+            <mat-slider
+                min="0"
+                [max]="(paginator.length / paginator.pageSize).toFixed()"
+                [displayWith]="formatPageLabel"
+                step="1"
+                [(ngModel)]="pageIndex"
+                thumbLabel></mat-slider>
+        </div>
+        <div *ngIf="isLoadingResults" class="ml-2 row">
+            <mat-spinner [diameter]="30"></mat-spinner>
+            <span class="ml-2" style="font-size: 12px">Loading...</span>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>

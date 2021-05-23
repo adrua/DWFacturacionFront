@@ -1,0 +1,16 @@
+p, a {
+    font-family: "Montserrat",sans-serif;
+    font-size: 14px;
+    color: white;
+    margin: 0;
+}
+
+.icono {
+    width: 30px;
+    margin-right: 12px;
+    margin-left: 12px;
+}
+
+.sub {
+    text-decoration: underline !important;
+}

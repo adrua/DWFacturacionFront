@@ -2,12 +2,60 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>CxcFront</title>
+  <title>Facturacion - v20201219</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script>
+    var lastError = null;
+    var readOnly = null;
+    var genericFilterString = (filter) => `${filter.column} ${filter.condition} '${filter.value}'`;
+    var genericFilterNumber = (filter) => `${filter.column} ${filter.condition} ${filter.value}`;
+    var genericFilterDate = (filter) => `${filter.column} ${filter.condition} ${filter.value.toISOString()}`;
+    var genericFilterBoolean = (filter) => `${filter.column} ${filter.condition} ${filter.value}`;
+
+    const CONDITIONS_LIST = [
+      { value: 'like', label: 'Contains', filter: (filter) => `indexof(${filter.column}, '${filter.value}') ge 0`},
+      { value: 'not like', label: 'Not Contains', filter: (filter) => `indexof(${filter.column}, '${filter.value}') lt 0` },
+      { value: 'Eq', label: 'Is equal', filter: genericFilterString },
+      { value: 'Ne', label: 'Is not equal', filter: genericFilterString }
+    ];
+
+    const CONDITIONS_LIST_NUMBER = [
+      { value: 'Gt', label: 'Greater Than', filter: genericFilterNumber },
+      { value: 'Ge', label: 'Greater or Equal', filter: genericFilterNumber },
+      { value: 'Lt', label: 'Less Than', filter: genericFilterNumber },
+      { value: 'Le', label: 'Less or Equal', filter: genericFilterNumber },
+      { value: 'Eq', label: 'Is equal', filter: genericFilterNumber },
+      { value: 'Ne', label: 'Is not equal', filter: genericFilterNumber }
+    ];
+
+    const CONDITIONS_LIST_DATE = [
+      { value: 'Gt', label: 'Greater Than', filter: genericFilterDate },
+      { value: 'Ge', label: 'Greater or Equal', filter: genericFilterDate },
+      { value: 'Lt', label: 'Less Than', filter: genericFilterDate },
+      { value: 'Le', label: 'Less or Equal', filter: genericFilterDate },
+      { value: 'Eq', label: 'Is equal', filter: genericFilterDate },
+      { value: 'Ne', label: 'Is not equal', filter: genericFilterDate }
+    ];
+ 
+    const CONDITIONS_LIST_BOOLEAN = [
+      { value: 'Eq', label: 'Is equal', filter: genericFilterBoolean },
+      { value: 'Ne', label: 'Is not equal', filter: genericFilterBoolean }
+    ];
+ 
+    const conditionsLists = {
+      "Boolean": CONDITIONS_LIST_BOOLEAN,
+      "Date": CONDITIONS_LIST_DATE,
+      "Number": CONDITIONS_LIST_NUMBER,
+      "Varchar": CONDITIONS_LIST,
+    }
+  </script>
 </head>
-<body>
+<body class="mat-typography zoom">
   <app-root></app-root>
 </body>
 </html>

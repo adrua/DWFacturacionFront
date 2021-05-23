@@ -1,0 +1,57 @@
+<mat-card>
+    <mat-card-header>
+        <div class="d-flex align-items-center m-card">
+            <mat-card-title class="mb-0">{{ 'busqueda._titulo' | translate }}</mat-card-title>
+            <span [ngStyle]="{'margin': 'auto'}"></span>
+            <mat-icon *ngIf="busquedaForm.invalid" [matTooltip]="getErrorMessages()">error_outline</mat-icon>
+            <mat-icon mat-dialog-close>close</mat-icon>
+        </div>
+    </mat-card-header>
+    <mat-card-content class="mb-0" style="width: 400px;">
+        <form [formGroup]="busquedaForm" (ngSubmit)="onSubmit(busquedaForm.value)" autocomplete="off">
+            <div class="dialog-content">
+                <div class="row">                    
+                    <div class="col-sm-12 col-xs-12">
+                        <mat-form-field>
+                            <input matInput class="nodis"
+                                    autocomplete="off"
+                                    [matAutocomplete]="ESAPBOGFuncionalidadesNombre"
+                                    [formControl]="ESAPBOGFuncionalidadesNombreCtrl"
+                                    placeholder="{{ 'busqueda.ESAPBOGFuncionalidadesNombre' | translate }}:"
+                                    (keydown)="onKeydown_ESAPBOGFuncionalidadesNombre($event);">
+                        </mat-form-field>
+                        <mat-autocomplete #ESAPBOGFuncionalidadesNombre="matAutocomplete">
+                            <mat-option *ngFor="let opt of filteredESAPBOGFuncionalidadesNombre" [value]="opt.Description" (click)="onSelect_ESAPBOGFuncionalidadesNombre(opt);">
+                                {{ opt.Description }}
+                            </mat-option>
+                        </mat-autocomplete>
+                        <mat-error *ngIf="ESAPBOGFuncionalidadesNombreCtrl.invalid && ESAPBOGFuncionalidadesNombreCtrl.touched">{{ "busqueda.ESAPBOGFuncionalidadesNombreError" | translate }}</mat-error>
+                    </div>
+                    <div class="col-sm-12 col-xs-12">
+                        <mat-form-field>
+                            <input matInput class="nodis" type="text" formControlName="ESAPBOGGrupoNombre" placeholder="{{ 'busqueda.ESAPBOGGrupoNombre' | translate }}:">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-12 col-xs-12">
+                        <mat-form-field>
+                            <input matInput class="nodis" type="text" formControlName="ESAPBOGModuloNombre" placeholder="{{ 'busqueda.ESAPBOGModuloNombre' | translate }}:">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </mat-card-content>
+    <mat-card-actions>
+        <mat-spinner *ngIf="_proc" [diameter]="30" class="mb-3 mx-auto"></mat-spinner>
+        <button mat-button
+            (click)="onSubmit(busquedaForm.value);"
+            [disabled]="!busquedaForm.valid">
+            {{ "busqueda._buscar" | translate  }}
+        </button>
+        <button
+            mat-button
+            mat-dialog-close>
+            {{ "busqueda._cancelar" | translate  }}
+        </button>
+    </mat-card-actions>
+</mat-card>

@@ -4,18 +4,17 @@ import { CntCodigosCiiuModule } from './cnt.codigosciiu/cnt.codigosciiu.module';
 
 const routes: Routes = [
     {
-        path: 'CNT_Bancos',
+        path: 'CNTBancos',
         loadChildren: () => import('./cnt.bancos/cnt.bancos.module').then(mod => mod.CntBancosModule),
         //canActivate: [AuthGuard]
     },
     {
-        path: 'CNT_CodigosCiiu',
-        loadChildren: () => import('./cnt.codigosciiu/cnt.codigosciiu.module').then(mod => mod.CntCodigosCiiuModule),
-        //canActivate: [AuthGuard]
+        path: 'CNTCodigosCiiu',
+        loadChildren: () => import('./cnt.codigosciiu/cnt.codigosciiu.module').then(mod => mod.CntCodigosCiiuModule)
     },
     {
         path: 'CNTCodigosCiiu',
-        loadChildren: () => import('./cnt.codigosciiu/cnt.codigosciiu.module').then(mod => mod.CntCodigosCiiuModuleModule)
+        loadChildren: () => import('./cnt.codigosciiu/cnt.codigosciiu.module').then(mod => mod.CntCodigosCiiuModule)
     },
     {
         path: '',

@@ -27,14 +27,14 @@ export class FuncionalidadesService {
             "children": [
               {
                 "id": 251,
-                "name": "CNT_Bancos", 
+                "name": "CNTBancos", 
                 "descripcion": "Bancos",
                 "check": true,
                 "children": []
               },
               {
                 "id": 261,
-                "name": "CNT_CodigosCiiu", 
+                "name": "CNTCodigosCiiu", 
                 "descripcion": "Codigos Ciiu",
                 "check": true,
                 "children": []

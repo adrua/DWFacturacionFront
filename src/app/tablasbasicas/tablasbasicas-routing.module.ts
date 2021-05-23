@@ -17,8 +17,8 @@ const routes: Routes = [
         loadChildren: () => import('./cnt.clientes/cnt.clientes.module').then(mod => mod.CntClientesModule)
     },
     {
-        path: 'CNTClientes',
-        loadChildren: () => import('./cnt.clientes/cnt.clientes.module').then(mod => mod.CntClientesModule)
+        path: 'CNTCiudades',
+        loadChildren: () => import('./cnt.ciudades/cnt.ciudades.module').then(mod => mod.CntCiudadesModule)
     },
     {
         path: '',

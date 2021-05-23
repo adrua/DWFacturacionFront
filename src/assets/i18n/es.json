@@ -230,5 +230,25 @@
 		"_eliminar": "Eliminar",
 		"_cancelar": "Cancelar",
 		"_titulo": "Clientes.CNT"
+	},
+	"cntCiudades": {
+		"CiudadDepartamentoId": "Departamento",
+		"CiudadDepartamentoIdError": "Departamento inválido",
+		"Ciudadid": "Ciudad",
+		"CiudadidError": "Ciudad inválido",
+		"CiudadCodigoPoblado": "Codigo Poblado",
+		"CiudadCodigoPobladoError": "Codigo Poblado inválido",
+		"CiudadNombreDepartamento": "Nombre Departamento",
+		"CiudadNombreDepartamentoError": "Nombre Departamento inválido",
+		"CiudadNombreCiudad": "Nombre Ciudad",
+		"CiudadNombreCiudadError": "Nombre Ciudad inválido",
+		"CiudadNombrePoblado": "Nombre Poblado",
+		"CiudadNombrePobladoError": "Nombre Poblado inválido",
+		"CiudadTipoMunicipio": "Tipo Municipio",
+		"CiudadTipoMunicipioError": "Tipo Municipio inválido",
+		"_guardar": "Salvar y Seguir",
+		"_eliminar": "Eliminar",
+		"_cancelar": "Cancelar",
+		"_titulo": "Ciudades.CNT"
 	}
 }

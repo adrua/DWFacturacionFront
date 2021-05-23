@@ -17,6 +17,10 @@ const routes: Routes = [
         loadChildren: () => import('./cnt.codigosciiu/cnt.codigosciiu.module').then(mod => mod.CntCodigosCiiuModule)
     },
     {
+        path: 'CNTCodigosCiiu',
+        loadChildren: () => import('./cnt.codigosciiu/cnt.codigosciiu.module').then(mod => mod.CntCodigosCiiuModule)
+    },
+    {
         path: '',
         children: [ ]
     }

@@ -25,6 +25,10 @@ const routes: Routes = [
         loadChildren: () => import('./inv.productos/inv.productos.module').then(mod => mod.invProductosModule)
     },
     {
+        path: 'CNTClientes',
+        loadChildren: () => import('./cnt.clientes/cnt.clientes.module').then(mod => mod.CntClientesModule)
+    },
+    {
         path: '',
         children: [ ]
     }

@@ -11,14 +11,14 @@ export class CntClientesMockService {
     autoincrement = this.rows.length;
 
     rowsCntCodigosCiiu: Array<any> = [{
-        CodigoCiiuId: "155",
+        CodigoCiiuId: "165",
         CodigoCiiuDescripcion: "Venta Pasajes Aereos"
     }];
 
     rowsCntCiudades: Array<any> = [{
-        CiudadDepartamentoId: 397,
-        Ciudadid: 397,
-        Cnt: "397",
+        CiudadDepartamentoId: 407,
+        Ciudadid: 407,
+        Cnt: "407",
         CiudadNombreCiudad: "Cali"
     }];
 

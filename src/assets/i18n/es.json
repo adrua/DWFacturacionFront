@@ -229,7 +229,9 @@
 		"_guardar": "Salvar y Seguir",
 		"_eliminar": "Eliminar",
 		"_cancelar": "Cancelar",
-		"_titulo": "Clientes.CNT"
+		"_titulo": "Clientes.CNT",
+		"ClienteEdad": "Edad",
+		"ClienteEdadError": "Edad inválido"
 	},
 	"cntCiudades": {
 		"CiudadDepartamentoId": "Departamento",

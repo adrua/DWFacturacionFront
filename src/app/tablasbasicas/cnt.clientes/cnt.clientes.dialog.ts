@@ -66,6 +66,7 @@ export class CntClientesDialog {
             'ClienteClasificacion': [ this.selectedCntClientes.ClienteClasificacion, [ Validators.required ] ],
             'ClienteTipoID': [ this.selectedCntClientes.ClienteTipoID, [ Validators.required ] ],
             'ClienteNit': [ this.selectedCntClientes.ClienteNit, [ Validators.required ] ],
+            'ClienteEdad': [ this.selectedCntClientes.ClienteEdad, [ Validators.required, Validators.maxLength(2), Validators.pattern('^[0-9]+(\\.[0-9]*)?$') ] ],
             'CodigoCiiuId': [ this.selectedCntClientes.CodigoCiiuId, [ Validators.required ] ],
             'ClienteEstado': [ this.selectedCntClientes.ClienteEstado, [ Validators.required ] ],
             'ClienteRazonSocial': [ this.selectedCntClientes.ClienteRazonSocial, [ Validators.required ] ],
@@ -115,6 +116,11 @@ export class CntClientesDialog {
             }, {emitEvent: false, onlySelf: true});
         });
     }
+
+    onTotals(totals: CntClientesModel) {
+        this.cntClientesForm.patchValue(totals);  
+    }
+
     onSubmit(formData: CntClientesModel) {
         this._proc = true;
         if (this.cntClientesForm.valid) {

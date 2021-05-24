@@ -36,12 +36,13 @@ describe('CntClientesDialog', () => {
         ClienteClasificacion: EnumClienteClasificacion['Juridica'],
         ClienteTipoID: EnumClienteTipoID['Numero_Identificacion_Tributaria'],
         ClienteNit: `1234567890123-1`,
-        CodigoCiiuId: `155`,
+        ClienteEdad: 30,
+        CodigoCiiuId: `165`,
         ClienteEstado: EnumClienteEstado['Activo'],
         ClienteRazonSocial: `Armando Escandalo de los rios`,
         ClienteDireccion: `Bulgaria #146 y Diego de Almagro Of. 065 Edif. Doral Almagro`,
-        CiudadDepartamentoId: 397,
-        Ciudadid: 397,
+        CiudadDepartamentoId: 407,
+        Ciudadid: 407,
         CntCiudadesComp: '', //convert(varchar(max),CiudadDepartamentoId)|| '/' || convert(varchar(max),Ciudadid)
         ClienteTelefono: `02-948-326`,
         ClienteCelular: `57-311 282 42 63`,
@@ -50,13 +51,13 @@ describe('CntClientesDialog', () => {
         ClienteTelefonoContacto: `02-948-322`,
         ClienteEmailContacto: `adrua@hotmail.com`,
         CntCodigosCiiu: {
-            CodigoCiiuId: `155`,
+            CodigoCiiuId: `165`,
             CodigoCiiuDescripcion: `Venta Pasajes Aereos`
         },
         CntCiudades: {
-            CiudadDepartamentoId: 397,
-            Ciudadid: 397,
-            Cnt: `397`,
+            CiudadDepartamentoId: 407,
+            Ciudadid: 407,
+            Cnt: `407`,
             CiudadNombreCiudad: `Cali`
         },
         _estado: ''
@@ -145,6 +146,7 @@ describe('CntClientesDialog', () => {
             formControls.ClienteClasificacion.setValue(rowBase.ClienteClasificacion);      
             formControls.ClienteTipoID.setValue(rowBase.ClienteTipoID);      
             formControls.ClienteNit.setValue(rowBase.ClienteNit);      
+            formControls.ClienteEdad.setValue(rowBase.ClienteEdad);      
             formControls.CodigoCiiuId.setValue(rowBase.CodigoCiiuId);      
             formControls.ClienteEstado.setValue(rowBase.ClienteEstado);      
             formControls.ClienteRazonSocial.setValue(rowBase.ClienteRazonSocial);      
@@ -196,6 +198,7 @@ describe('CntClientesDialog', () => {
                 expect(row.ClienteClasificacion).toBe(rowBase.ClienteClasificacion);
                 expect(row.ClienteTipoID).toBe(rowBase.ClienteTipoID);
                 expect(row.ClienteNit).toBe(rowBase.ClienteNit);
+                expect(row.ClienteEdad).toBe(rowBase.ClienteEdad);
                 expect(row.CodigoCiiuId).toBe(rowBase.CodigoCiiuId);
                 expect(row.ClienteEstado).toBe(rowBase.ClienteEstado);
                 expect(row.ClienteRazonSocial).toBe(rowBase.ClienteRazonSocial);
@@ -254,6 +257,7 @@ describe('CntClientesDialog', () => {
                 expect(row.ClienteClasificacion).toBe(rowBase.ClienteClasificacion);
                 expect(row.ClienteTipoID).toBe(rowBase.ClienteTipoID);
                 expect(row.ClienteNit).toBe(rowBase.ClienteNit);
+                expect(row.ClienteEdad).toBe(rowBase.ClienteEdad);
                 expect(row.CodigoCiiuId).toBe(rowBase.CodigoCiiuId);
                 expect(row.ClienteEstado).toBe(rowBase.ClienteEstado);
                 expect(row.ClienteRazonSocial).toBe(rowBase.ClienteRazonSocial);

@@ -28,7 +28,7 @@ export class CntClientesTable implements AfterViewInit {
     selectedIndex: number = 0;
     originalRow: CntClientesModel;
 
-    public displayedColumns: string[] = ['clienteId', 'clienteClasificacion', 'clienteTipoID', 'clienteNit', 'cntCodigosCiiu/codigoCiiuDescripcion', 'clienteEstado', 'clienteRazonSocial', 'clienteDireccion', 'cntCiudades/ciudadNombreCiudad', 'clienteTelefono', 'clienteCelular', 'clienteEmail', 'clienteContacto', 'clienteTelefonoContacto', 'clienteEmailContacto'];
+    public displayedColumns: string[] = ['clienteId', 'clienteClasificacion', 'clienteTipoID', 'clienteNit', 'clienteEdad', 'cntCodigosCiiu/codigoCiiuDescripcion', 'clienteEstado', 'clienteRazonSocial', 'clienteDireccion', 'cntCiudades/ciudadNombreCiudad', 'clienteTelefono', 'clienteCelular', 'clienteEmail', 'clienteContacto', 'clienteTelefonoContacto', 'clienteEmailContacto'];
 
     public conditionsList = conditionsLists.Varchar;
     public searchValue: any = {};

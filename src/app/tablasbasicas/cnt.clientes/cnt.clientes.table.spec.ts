@@ -34,12 +34,13 @@ describe('CntClientesTable', () => {
         ClienteClasificacion: EnumClienteClasificacion['Juridica'],
         ClienteTipoID: EnumClienteTipoID['Numero_Identificacion_Tributaria'],
         ClienteNit: `1234567890123-1`,
-        CodigoCiiuId: `155`,
+        ClienteEdad: 30,
+        CodigoCiiuId: `165`,
         ClienteEstado: EnumClienteEstado['Activo'],
         ClienteRazonSocial: `Armando Escandalo de los rios `,
         ClienteDireccion: `Bulgaria #146 y Diego de Almagro Of. 065 Edif. Doral Almagro`,
-        CiudadDepartamentoId: 397,
-        Ciudadid: 397,
+        CiudadDepartamentoId: 407,
+        Ciudadid: 407,
         CntCiudades_Comp: '', //convert(varchar(max),CiudadDepartamentoId)|| '/' || convert(varchar(max),Ciudadid)
         ClienteTelefono: `02-948-326`,
         ClienteCelular: `57-311 282 42 63`,
@@ -48,13 +49,13 @@ describe('CntClientesTable', () => {
         ClienteTelefonoContacto: `02-948-322`,
         ClienteEmailContacto: `adrua@hotmail.com`,
         CntCodigosCiiu: {
-            CodigoCiiuId: `155`,
+            CodigoCiiuId: `165`,
             CodigoCiiuDescripcion: `Venta Pasajes Aereos`
         },
         CntCiudades: {
-            CiudadDepartamentoId: 397,
-            Ciudadid: 397,
-            Cnt: `397`,
+            CiudadDepartamentoId: 407,
+            Ciudadid: 407,
+            Cnt: `407`,
             CiudadNombreCiudad: `Cali`
         },
         _estado: ''

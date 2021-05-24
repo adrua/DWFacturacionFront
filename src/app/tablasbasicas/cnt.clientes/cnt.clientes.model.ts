@@ -22,6 +22,7 @@ export class CntClientesModel {
     public ClienteClasificacion: EnumClienteClasificacion = EnumClienteClasificacion['Persona_Natural'];
     public ClienteTipoID: EnumClienteTipoID = EnumClienteTipoID['Numero_Identificacion_Tributaria'];
     public ClienteNit: string;
+    public ClienteEdad: number;
     public CodigoCiiuId: string;
     public ClienteEstado: EnumClienteEstado = EnumClienteEstado['Activo'];
     public ClienteRazonSocial: string;
@@ -48,6 +49,7 @@ export class CntClientesModel {
             this.ClienteClasificacion = json.ClienteClasificacion;
             this.ClienteTipoID = json.ClienteTipoID;
             this.ClienteNit = json.ClienteNit;
+            this.ClienteEdad = json.ClienteEdad;
             this.CodigoCiiuId = json.CodigoCiiuId;
             this.ClienteEstado = json.ClienteEstado;
             this.ClienteRazonSocial = json.ClienteRazonSocial;
@@ -88,6 +90,7 @@ export class CntClientesModel {
               ClienteClasificacion: dato.ClienteClasificacion,
               ClienteTipoID: dato.ClienteTipoID,
               ClienteNit: dato.ClienteNit,
+              ClienteEdad: dato.ClienteEdad,
               CodigoCiiuId: dato.CodigoCiiuId,
               ClienteEstado: dato.ClienteEstado,
               ClienteRazonSocial: dato.ClienteRazonSocial,
@@ -117,6 +120,7 @@ export class CntClientesModel {
         result += `${separator}${this.ClienteClasificacion}`;
         result += `${separator}${this.ClienteTipoID}`;
         result += `${separator}${this.ClienteNit}`;
+        result += `${separator}${this.ClienteEdad}`;
         result += `${separator}${this.CodigoCiiuId}`;
         result += `${separator}${this.ClienteEstado}`;
         result += `${separator}${this.ClienteRazonSocial}`;
@@ -140,18 +144,19 @@ export class CntClientesModel {
         this.ClienteClasificacion = EnumClienteClasificacion[result[1]];
         this.ClienteTipoID = EnumClienteTipoID[result[2]];
         this.ClienteNit = result[3];
-        this.CodigoCiiuId = result[4];
-        this.ClienteEstado = EnumClienteEstado[result[5]];
-        this.ClienteRazonSocial = result[6];
-        this.ClienteDireccion = result[7];
-        this.CiudadDepartamentoId = parseInt(result[8]);
-        this.Ciudadid = parseInt(result[9]);
-        this.ClienteTelefono = result[10];
-        this.ClienteCelular = result[11];
-        this.ClienteEmail = result[12];
-        this.ClienteContacto = result[13];
-        this.ClienteTelefonoContacto = result[14];
-        this.ClienteEmailContacto = result[15];
+        this.ClienteEdad = parseInt(result[4]);
+        this.CodigoCiiuId = result[5];
+        this.ClienteEstado = EnumClienteEstado[result[6]];
+        this.ClienteRazonSocial = result[7];
+        this.ClienteDireccion = result[8];
+        this.CiudadDepartamentoId = parseInt(result[9]);
+        this.Ciudadid = parseInt(result[10]);
+        this.ClienteTelefono = result[11];
+        this.ClienteCelular = result[12];
+        this.ClienteEmail = result[13];
+        this.ClienteContacto = result[14];
+        this.ClienteTelefonoContacto = result[15];
+        this.ClienteEmailContacto = result[16];
 
         return this;
     }

@@ -22,12 +22,13 @@ describe('CntClientesService', () => {
         ClienteClasificacion: EnumClienteClasificacion['Juridica'],
         ClienteTipoID: EnumClienteTipoID['Numero_Identificacion_Tributaria'],
         ClienteNit: `1234567890123-1`,
-        CodigoCiiuId: `155`,
+        ClienteEdad: 30,
+        CodigoCiiuId: `165`,
         ClienteEstado: EnumClienteEstado['Activo'],
         ClienteRazonSocial: `Armando Escandalo de los rios `,
         ClienteDireccion: `Bulgaria #146 y Diego de Almagro Of. 065 Edif. Doral Almagro`,
-        CiudadDepartamentoId: 397,
-        Ciudadid: 397,
+        CiudadDepartamentoId: 407,
+        Ciudadid: 407,
         CntCiudades_Comp: '', //convert(varchar(max),CiudadDepartamentoId)|| '/' || convert(varchar(max),Ciudadid)
         ClienteTelefono: `02-948-326`,
         ClienteCelular: `57-311 282 42 63`,
@@ -36,13 +37,13 @@ describe('CntClientesService', () => {
         ClienteTelefonoContacto: `02-948-322`,
         ClienteEmailContacto: `adrua@hotmail.com`,
         CntCodigosCiiu: {
-            CodigoCiiuId: `155`,
+            CodigoCiiuId: `165`,
             CodigoCiiuDescripcion: `Venta Pasajes Aereos`
         },
         CntCiudades: {
-            CiudadDepartamentoId: 397,
-            Ciudadid: 397,
-            Cnt: `397`,
+            CiudadDepartamentoId: 407,
+            Ciudadid: 407,
+            Cnt: `407`,
             CiudadNombreCiudad: `Cali`
         },
         _estado: ''
@@ -63,6 +64,7 @@ describe('CntClientesService', () => {
 		    expect(value.ClienteClasificacion).toBe(row.ClienteClasificacion);
 		    expect(value.ClienteTipoID).toBe(row.ClienteTipoID);
 		    expect(value.ClienteNit).toBe(row.ClienteNit);
+		    expect(value.ClienteEdad).toBe(row.ClienteEdad);
 		    expect(value.CodigoCiiuId).toBe(row.CodigoCiiuId);
 		    expect(value.ClienteEstado).toBe(row.ClienteEstado);
 		    expect(value.ClienteRazonSocial).toBe(row.ClienteRazonSocial);
@@ -147,6 +149,7 @@ describe('CntClientesService', () => {
 		    expect(value.ClienteClasificacion).toBe(row.ClienteClasificacion);
 		    expect(value.ClienteTipoID).toBe(row.ClienteTipoID);
 		    expect(value.ClienteNit).toBe(row.ClienteNit);
+		    expect(value.ClienteEdad).toBe(row.ClienteEdad);
 		    expect(value.CodigoCiiuId).toBe(row.CodigoCiiuId);
 		    expect(value.ClienteEstado).toBe(row.ClienteEstado);
 		    expect(value.ClienteRazonSocial).toBe(row.ClienteRazonSocial);
@@ -175,6 +178,7 @@ describe('CntClientesService', () => {
 		    expect(value.ClienteClasificacion).toBe(row.ClienteClasificacion);
 		    expect(value.ClienteTipoID).toBe(row.ClienteTipoID);
 		    expect(value.ClienteNit).toBe(row.ClienteNit);
+		    expect(value.ClienteEdad).toBe(row.ClienteEdad);
 		    expect(value.CodigoCiiuId).toBe(row.CodigoCiiuId);
 		    expect(value.ClienteEstado).toBe(row.ClienteEstado);
 		    expect(value.ClienteRazonSocial).toBe(row.ClienteRazonSocial);

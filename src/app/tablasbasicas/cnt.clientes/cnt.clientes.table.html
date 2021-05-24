@@ -44,6 +44,17 @@
             <mat-cell *matCellDef="let row">{{row.ClienteNit}}</mat-cell>
         </ng-container>
 
+        <!-- Edad: Column -->
+        <ng-container matColumnDef="clienteEdad">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ClienteEdad', 'Number', 'ClienteEdad', ':')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "cntClientes.ClienteEdad" | translate }}:</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.ClienteEdad}}</mat-cell>
+        </ng-container>
+
         <!-- Codigo Ciiu: Column -->
         <ng-container matColumnDef="cntCodigosCiiu/codigoCiiuDescripcion">
             <mat-header-cell *matHeaderCellDef disableClear>

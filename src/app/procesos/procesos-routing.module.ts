@@ -7,6 +7,10 @@ const routes: Routes = [
         loadChildren: () => import('./cnt.facturas/cnt.facturas.module').then(mod => mod.CntFacturasModule)
     },
     {
+        path: 'CNTFacturas',
+        loadChildren: () => import('./cnt.facturas/cnt.facturas.module').then(mod => mod.CntFacturasModule)
+    },
+    {
         path: '',
         children: [
         ]

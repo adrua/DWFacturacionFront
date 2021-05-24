@@ -56,10 +56,10 @@ export class CntFacturasDialog {
             'FacturaSerie': [ this.selectedCntFacturas.FacturaSerie, [ Validators.required, Validators.maxLength(3), Validators.pattern('^[0-9]+(\\.[0-9]*)?$') ] ],
             'FacturaFecha': [ this.selectedCntFacturas.FacturaFecha, [ Validators.required ] ],
             'ClienteId': [ this.selectedCntFacturas.ClienteId, [ Validators.required, Validators.maxLength(6), Validators.pattern('^[0-9]+(\\.[0-9]*)?$') ] ],
-            'FacturaValor': [ this.selectedCntFacturas.FacturaValor, [ Validators.required, Validators.maxLength(18), Validators.pattern('^[0-9]+(\\.[0-9]*)?$') ] ],
+            'FacturaValor': [ this.selectedCntFacturas.FacturaValor, [ Validators.maxLength(18), Validators.pattern('^[0-9]+(\\.[0-9]*)?$') ] ],
             'FacturaValorNoGravado': [ this.selectedCntFacturas.FacturaValorNoGravado, [ Validators.required, Validators.maxLength(18), Validators.pattern('^[0-9]+(\\.[0-9]*)?$') ] ],
-            'FacturaImpuestos': [ this.selectedCntFacturas.FacturaImpuestos, [ Validators.required, Validators.maxLength(18), Validators.pattern('^[0-9]+(\\.[0-9]*)?$') ] ],
-            'FacturaTotal': [ this.selectedCntFacturas.FacturaTotal, [ Validators.required, Validators.maxLength(18), Validators.pattern('^[0-9]+(\\.[0-9]*)?$') ] ],
+            'FacturaImpuestos': [ this.selectedCntFacturas.FacturaImpuestos, [ Validators.maxLength(18), Validators.pattern('^[0-9]+(\\.[0-9]*)?$') ] ],
+            'FacturaTotal': [ this.selectedCntFacturas.FacturaTotal, [ Validators.maxLength(18), Validators.pattern('^[0-9]+(\\.[0-9]*)?$') ] ],
             '_estado': [ this.selectedCntFacturas._estado, Validators.required ]
         }, {
                 validators: (formGroup: AbstractControl): ValidationErrors | null => {

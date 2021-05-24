@@ -71,8 +71,8 @@ export class FuncionalidadesService {
             "children": [
               {
                 "id": 250,
-                "name": "COLMAG_Inscripciones",
-                "descripcion": "Inscripciones",
+                "name": "CNTFacturas",
+                "descripcion": "Facturas",
                 "check": true,
                 "children": []
               }

@@ -137,10 +137,7 @@ describe('CntFacturasDialog', () => {
             formControls.FacturaSerie.setValue(rowBase.FacturaSerie);      
             formControls.FacturaFecha.setValue(rowBase.FacturaFecha);      
             formControls.ClienteId.setValue(rowBase.ClienteId);      
-            formControls.FacturaValor.setValue(rowBase.FacturaValor);      
             formControls.FacturaValorNoGravado.setValue(rowBase.FacturaValorNoGravado);      
-            formControls.FacturaImpuestos.setValue(rowBase.FacturaImpuestos);      
-            formControls.FacturaTotal.setValue(rowBase.FacturaTotal);      
 
             expect(component.getErrorMessages()).toBe(_sinErrores);
 
@@ -156,6 +153,23 @@ describe('CntFacturasDialog', () => {
             expect(btnEliminar).toBeUndefined();
             expect(await btnCancelar.isDisabled()).toBeFalsy();
 
+            formControls.FacturaValor.setValue(rowBase.FacturaValor);
+            formControls.FacturaImpuestos.setValue(rowBase.FacturaImpuestos);
+            formControls.FacturaTotal.setValue(rowBase.FacturaTotal);
+
+            expect(component.getErrorMessages()).toBe(_sinErrores);
+
+            try {
+                [btnEliminar] = await parallel(() => [ 
+                    matCardActions.getHarness(MatButtonHarness.with({ text: _eliminar }))
+                ]);    
+            } catch {
+                //No Hacer nada
+            }
+
+            expect(await btnGuardar.isDisabled()).toBeFalsy();
+            expect(btnEliminar).toBeUndefined();
+            expect(await btnCancelar.isDisabled()).toBeFalsy();
         
             mockMatDialogRef.close = (result) => {
                 expect(result.data._estado).toBe('N');

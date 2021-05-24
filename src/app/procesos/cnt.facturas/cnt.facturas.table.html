@@ -43,13 +43,13 @@
             <mat-cell *matCellDef="let row"> {{row.CntClientes?.ClienteRazonSocial}} </mat-cell>
         </ng-container>
 
-        <!-- Valor: Column -->
+        <!-- Valor= Column -->
         <ng-container matColumnDef="facturaValor">
             <mat-header-cell *matHeaderCellDef disableClear>
-                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'FacturaValor', 'Number', 'FacturaValor', ':')">
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'FacturaValor', 'Number', 'FacturaValor', '=')">
                     <mat-icon>more_vert</mat-icon>
                 </button>
-                <span mat-sort-header>{{ "cntFacturas.FacturaValor" | translate }}:</span>
+                <span mat-sort-header>{{ "cntFacturas.FacturaValor" | translate }}=</span>
             </mat-header-cell>
             <mat-cell *matCellDef="let row" class="right">{{row.FacturaValor | currency:undefined:undefined:'1.2' }}</mat-cell>
         </ng-container>
@@ -65,24 +65,24 @@
             <mat-cell *matCellDef="let row" class="right">{{row.FacturaValorNoGravado | currency:undefined:undefined:'1.2' }}</mat-cell>
         </ng-container>
 
-        <!-- Impuestos: Column -->
+        <!-- Impuestos= Column -->
         <ng-container matColumnDef="facturaImpuestos">
             <mat-header-cell *matHeaderCellDef disableClear>
-                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'FacturaImpuestos', 'Number', 'FacturaImpuestos', ':')">
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'FacturaImpuestos', 'Number', 'FacturaImpuestos', '=')">
                     <mat-icon>more_vert</mat-icon>
                 </button>
-                <span mat-sort-header>{{ "cntFacturas.FacturaImpuestos" | translate }}:</span>
+                <span mat-sort-header>{{ "cntFacturas.FacturaImpuestos" | translate }}=</span>
             </mat-header-cell>
             <mat-cell *matCellDef="let row" class="right">{{row.FacturaImpuestos | currency:undefined:undefined:'1.2' }}</mat-cell>
         </ng-container>
 
-        <!-- Total: Column -->
+        <!-- Total= Column -->
         <ng-container matColumnDef="facturaTotal">
             <mat-header-cell *matHeaderCellDef disableClear>
-                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'FacturaTotal', 'Number', 'FacturaTotal', ':')">
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'FacturaTotal', 'Number', 'FacturaTotal', '=')">
                     <mat-icon>more_vert</mat-icon>
                 </button>
-                <span mat-sort-header>{{ "cntFacturas.FacturaTotal" | translate }}:</span>
+                <span mat-sort-header>{{ "cntFacturas.FacturaTotal" | translate }}=</span>
             </mat-header-cell>
             <mat-cell *matCellDef="let row" class="right">{{row.FacturaTotal | currency:undefined:undefined:'1.2' }}</mat-cell>
         </ng-container>

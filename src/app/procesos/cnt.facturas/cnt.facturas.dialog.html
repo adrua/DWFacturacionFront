@@ -109,8 +109,8 @@
                     {{ "cntFacturas._cancelar" | translate  }}
                 </button>
             </mat-card-actions>
-            <mat-card-content *ngIf="true || (cntFacturasForm.valid && originalCntFacturas._estado === 'O')">
-              <cnt-facturamovimientos-table [masterRow]="cntFacturasForm.value"></cnt-facturamovimientos-table>
+            <mat-card-content [ngStyle]="{ 'pointer-events': (cntFacturasForm.valid && originalCntFacturas._estado === 'O') ? 'auto' : 'none' }">
+              <cnt-facturamovimientos-table [masterRow]="cntFacturasForm.value" (totals)="onTotals($event)"></cnt-facturamovimientos-table>
             </mat-card-content>
         </mat-card>
     </div>

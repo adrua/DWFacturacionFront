@@ -2,9 +2,9 @@ import { CntFacturaMovimientosModel } from './cnt.facturamovimientos/cnt.factura
 
 export class CntFacturasModel {
     public FacturaId: number = 0;
-    public FacturaSerie: number;
+    public FacturaSerie: number = 1;
     public CntFacturasComp: string;
-    public FacturaFecha: Date;
+    public FacturaFecha: Date = new Date();
     public ClienteId: number;
     public FacturaValor: number = 0.0;
     public FacturaValorNoGravado: number = 0.0;

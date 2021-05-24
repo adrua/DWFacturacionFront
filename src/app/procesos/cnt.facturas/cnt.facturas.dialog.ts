@@ -10,11 +10,12 @@ import { AlertaComponent } from 'arkeos-components';
 
 import { CntFacturasService } from './cnt.facturas.service';
 import { CntFacturasModel } from './cnt.facturas.model';
+import { CntFacturaMovimientosModel } from './cnt.facturamovimientos/cnt.facturamovimientos.model';
 //import { CNTFacturaMovimientosComponent } from './cnt.facturamovimientos';
 
 @Component({
   templateUrl: './cnt.facturas.dialog.html',
-  // styleUrls: ['./cnt.facturas.dialog.css'],
+  styleUrls: ['./cnt.facturas.dialog.css'],
   providers: [CntFacturasService]
 })
 export class CntFacturasDialog {
@@ -91,6 +92,12 @@ export class CntFacturasDialog {
             }, {emitEvent: false, onlySelf: true});
         });
     }
+
+    onTotals(totals: CntFacturasModel) {
+        this.cntFacturasForm.patchValue(totals);  
+        this.onSubmit(this.cntFacturasForm.value);  
+    }
+
     onSubmit(formData: CntFacturasModel) {
         this._proc = true;
         if (this.cntFacturasForm.valid) {
@@ -109,9 +116,6 @@ export class CntFacturasDialog {
                     }
 
                     formData.CntClientes = this.clienteRazonSocialCtrl["CntClientes"];
-                    this.dialogRef.close({
-                        data: formData
-                    });
                 } else {
                    this.resultError = data.error?.value || data.message;
                    this.openNotificationDanger('alertas.guardar.error', this.resultError)

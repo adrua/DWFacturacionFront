@@ -87,6 +87,7 @@ export class CntFacturaMovimientosDialog {
             }, {emitEvent: false, onlySelf: true});
         });
     }
+    
     onSubmit(formData: CntFacturaMovimientosModel) {
         this._proc = true;
         if (this.cntFacturaMovimientosForm.valid) {
@@ -186,7 +187,8 @@ export class CntFacturaMovimientosDialog {
             this.productoDescripcionCtrl["invProductos"] = opt;
 
             this.cntFacturaMovimientosForm.patchValue({
-                ProductoLinea: opt.ProductoLinea
+                ProductoLinea: opt.ProductoLinea,
+                FacturaMovimientoValorUnidad: opt.ProductoPrecio
             });
 
         } else {

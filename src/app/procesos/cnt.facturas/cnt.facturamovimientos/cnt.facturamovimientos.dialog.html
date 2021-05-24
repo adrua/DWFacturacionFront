@@ -1,0 +1,86 @@
+<div id="style_menu_desplegable" style="max-height: calc(120vh - 320px); padding: 0px; overflow: auto; margin:-24px">
+    <div style="padding: 0px; margin: 24px;">
+        <mat-card>
+            <mat-card-header>
+                <div class="d-flex align-items-center m-card">
+                    <mat-card-title class="mb-0">{{ 'cntFacturaMovimientos._titulo' | translate }}</mat-card-title>
+                    <span [ngStyle]="{'margin': 'auto'}" ></span>
+                    <mat-icon *ngIf="cntFacturaMovimientosForm.invalid" [matTooltip]="getErrorMessages()">error_outline</mat-icon>
+                    <mat-icon mat-dialog-close>close</mat-icon>
+                </div>
+            </mat-card-header>
+            <mat-card-content>
+                <form [formGroup]="cntFacturaMovimientosForm" (ngSubmit)="onSubmit(cntFacturaMovimientosForm.value)" autocomplete="off">
+                    <div class="dialog-content">
+                        <div class="row">
+                            <div class="col-sm-12 col-12">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>{{ 'cntFacturaMovimientos.ProductoDescripcion' | translate }}!({{cntFacturaMovimientosForm.controls.ProductoLinea?.value}})</mat-label>
+                                    <input matInput
+                                            autocomplete="off"
+                                            [matAutocomplete]="productoDescripcion"
+                                            [formControl]="productoDescripcionCtrl"
+                                            (keydown)="onKeydownProductoDescripcion($event);" />
+                                </mat-form-field>
+                                <mat-autocomplete #productoDescripcion="matAutocomplete"
+                                            [displayWith]="displayFnProductoDescripcion">
+                                    <mat-option *ngFor="let opt of filteredProductoDescripcion | async" 
+                                                [value]="opt">
+                                        {{ opt.ProductoDescripcion }}
+                                    </mat-option>
+                                </mat-autocomplete>
+                                <mat-error *ngIf="productoDescripcionCtrl.invalid && productoDescripcionCtrl.touched">{{ "CntFacturaMovimientos.ProductoDescripcionError" | translate }}</mat-error>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 col-12">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>{{ 'cntFacturaMovimientos.FacturaMovimientoCantidad' | translate }}:</mat-label>
+                                    <input matInput type="number"
+                                            formControlName="FacturaMovimientoCantidad" />
+                                </mat-form-field>
+                                <mat-error *ngIf="cntFacturaMovimientosForm.controls.FacturaMovimientoCantidad.invalid && cntFacturaMovimientosForm.controls.FacturaMovimientoCantidad.touched">{{ "cntFacturaMovimientos.FacturaMovimientoCantidadError" | translate }}</mat-error>
+                            </div>
+                            <div class="col-sm-6 col-12">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>{{ 'cntFacturaMovimientos.FacturaMovimientoValorUnidad' | translate }}:</mat-label>
+                                    <input matInput type="number"
+                                            formControlName="FacturaMovimientoValorUnidad" />
+                                </mat-form-field>
+                                <mat-error *ngIf="cntFacturaMovimientosForm.controls.FacturaMovimientoValorUnidad.invalid && cntFacturaMovimientosForm.controls.FacturaMovimientoValorUnidad.touched">{{ "cntFacturaMovimientos.FacturaMovimientoValorUnidadError" | translate }}</mat-error>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-12">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>{{ 'cntFacturaMovimientos.FacturaMovimientoTotal' | translate }}=</mat-label>
+                                    <input matInput type="number" readonly
+                                            formControlName="FacturaMovimientoTotal" />
+                                </mat-form-field>
+                                <mat-error *ngIf="cntFacturaMovimientosForm.controls.FacturaMovimientoTotal.invalid && cntFacturaMovimientosForm.controls.FacturaMovimientoTotal.touched">{{ "cntFacturaMovimientos.FacturaMovimientoTotalError" | translate }}</mat-error>
+                            </div>
+                    </div>
+                    </div>
+                </form>
+            </mat-card-content>
+            <mat-card-actions>
+                <mat-spinner *ngIf="_proc" [diameter]="30" class="mb-3 mx-auto"></mat-spinner>
+                <button mat-button
+                    (click)="onSubmit(cntFacturaMovimientosForm.value);"
+                    [disabled]="!cntFacturaMovimientosForm.valid">
+                    {{ "cntFacturaMovimientos._guardar" | translate  }}
+                </button>
+                <button mat-button *ngIf="originalCntFacturaMovimientos._estado === 'O'"
+                    (click)="onDelete(cntFacturaMovimientosForm.value);"
+                    [disabled]="!cntFacturaMovimientosForm.valid">
+                    {{ "cntFacturaMovimientos._eliminar" | translate  }}
+                </button>
+                <button
+                    mat-button
+                    mat-dialog-close>
+                    {{ "cntFacturaMovimientos._cancelar" | translate  }}
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

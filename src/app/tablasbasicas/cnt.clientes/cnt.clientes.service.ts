@@ -84,7 +84,7 @@ export class CntClientesService {
     }
 
     update(row: CntClientesModel, original: CntClientesModel): Observable<CntClientesModel> {
-        const sUrl = `${this.cntClientesUrl}(ClienteId=${original.ClienteId})`;
+        const sUrl = `${this.cntClientesODataUrl}?keyClienteId=${original.ClienteId}`;
 
         let changes = <any>{};
         let _current = CntClientesModel.clone(row);

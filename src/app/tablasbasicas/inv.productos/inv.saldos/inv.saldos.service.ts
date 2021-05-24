@@ -50,7 +50,7 @@ export class invSaldosService {
 
         const params: any = {};
 
-        params["$filter"] = `(ProductoLinea eq ${masterRow.ProductoLinea})`;
+        params["$filter"] = `(ProductoLinea eq '${masterRow.ProductoLinea}')`;
 
         if (filter) {
             params["$filter"] = ` and (${filter})`;
@@ -84,7 +84,7 @@ export class invSaldosService {
     }
 
     update(row: invSaldosModel, original: invSaldosModel): Observable<invSaldosModel> {
-        const sUrl = `${this.invSaldosUrl}(ProductoLinea=${original.ProductoLinea}, PeriodoDescripcionx=${original.PeriodoDescripcionx})`;
+        const sUrl = `${this.invSaldosODataUrl}?keyProductoLinea=${original.ProductoLinea}&keyPeriodoDescripcionx=${original.PeriodoDescripcionx}`;
 
         let changes = <any>{};
         let _current = invSaldosModel.clone(row);

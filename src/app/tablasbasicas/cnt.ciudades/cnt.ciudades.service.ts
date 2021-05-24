@@ -80,7 +80,7 @@ export class CntCiudadesService {
     }
 
     update(row: CntCiudadesModel, original: CntCiudadesModel): Observable<CntCiudadesModel> {
-        const sUrl = `${this.cntCiudadesUrl}(CiudadDepartamentoId=${original.CiudadDepartamentoId}, Ciudadid=${original.Ciudadid})`;
+        const sUrl = `${this.cntCiudadesODataUrl}?keyCiudadDepartamentoId=${original.CiudadDepartamentoId}&keyCiudadid=${original.Ciudadid}`;
 
         let changes = <any>{};
         let _current = CntCiudadesModel.clone(row);

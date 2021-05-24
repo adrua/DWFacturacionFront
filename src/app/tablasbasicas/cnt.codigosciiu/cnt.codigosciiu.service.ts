@@ -80,7 +80,7 @@ export class CntCodigosCiiuService {
     }
 
     update(row: CntCodigosCiiuModel, original: CntCodigosCiiuModel): Observable<CntCodigosCiiuModel> {
-        const sUrl = `${this.cntCodigosCiiuUrl}(CodigoCiiuId=${original.CodigoCiiuId})`;
+        const sUrl = `${this.cntCodigosCiiuODataUrl}?keyCodigoCiiuId=${original.CodigoCiiuId}`;
 
         let changes = <any>{};
         let _current = CntCodigosCiiuModel.clone(row);

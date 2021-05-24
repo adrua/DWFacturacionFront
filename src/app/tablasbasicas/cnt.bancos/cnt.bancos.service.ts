@@ -80,7 +80,7 @@ export class CntBancosService {
     }
 
     update(row: CntBancosModel, original: CntBancosModel): Observable<CntBancosModel> {
-        const sUrl = `${this.cntBancosUrl}(BancoId=${original.BancoId})`;
+        const sUrl = `${this.cntBancosODataUrl}?keyBancoId=${original.BancoId}`;
 
         let changes = <any>{};
         let _current = CntBancosModel.clone(row);

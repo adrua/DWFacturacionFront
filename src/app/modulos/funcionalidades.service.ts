@@ -52,8 +52,15 @@ export class FuncionalidadesService {
                 "descripcion": "Clientes",
                 "check": true,
                 "children": []
+              },
+              {
+                "id": 291,
+                "name": "invProductos", 
+                "descripcion": "Productos",
+                "check": true,
+                "children": []
               }
-
+              
             ]
           },
           {

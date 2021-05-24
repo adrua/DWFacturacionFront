@@ -1,15 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { CntFacturasTable } from './cnt.facturas.table';
+
 const routes: Routes = [
     {
-        path: 'CNTFacturas',
-        loadChildren: () => import('./cnt.facturas/cnt.facturas.module').then(mod => mod.CntFacturasModule)
-    },
-    {
         path: '',
-        children: [
-        ]
+        component: CntFacturasTable
     }
 ];
 
@@ -17,4 +14,4 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class ProcesosRoutingModule { }
+export class CntFacturasRoutingModule { }

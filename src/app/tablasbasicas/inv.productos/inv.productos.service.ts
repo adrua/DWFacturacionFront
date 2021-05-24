@@ -80,7 +80,7 @@ export class invProductosService {
     }
 
     update(row: invProductosModel, original: invProductosModel): Observable<invProductosModel> {
-        const sUrl = `${this.invProductosUrl}(ProductoLinea=${original.ProductoLinea})`;
+        const sUrl = `${this.invProductosODataUrl}?keyProductoLinea=${row.ProductoLinea}`;
 
         let changes = <any>{};
         let _current = invProductosModel.clone(row);
@@ -90,6 +90,7 @@ export class invProductosService {
                 changes[key] = _current[key];
             }
         }
+
 
         return this.http.patch<invProductosModel>(sUrl, changes).pipe(
             retry(3),

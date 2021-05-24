@@ -1,0 +1,183 @@
+<div class="mat-table-scroll" id="style_menu_desplegable">
+    <mat-table [dataSource]="rows" class="mat-elevation-z8" matSort multiTemplateDataRows [ngStyle]="{'width': 'auto'}">
+        <!-- select! Column -->
+        <ng-container matColumnDef="select">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let row; let index = dataIndex;">
+                <mat-icon (click)="$event.stopPropagation(); _expand = !_expand; onSelect($event, row, index);">
+                    {{(selectedRow === row && _expand)?'arrow_left':'arrow_drop_down'}}
+                </mat-icon>
+            </mat-cell>
+        </ng-container>
+        
+        <!-- Serie! Column -->
+        <ng-container matColumnDef="facturaSerie">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'FacturaSerie', 'Number', 'FacturaSerie', '!')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "cntFacturas.FacturaSerie" | translate }}!</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.FacturaSerie}}</mat-cell>
+        </ng-container>
+
+        <!-- Fecha: Column -->
+        <ng-container matColumnDef="facturaFecha">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'FacturaFecha', 'Date', 'FacturaFecha', ':')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "cntFacturas.FacturaFecha" | translate }}:</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.FacturaFecha | date}} </mat-cell>
+        </ng-container>
+
+        <!-- Cliente: Column -->
+        <ng-container matColumnDef="cntClientes/clienteRazonSocial">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'ClienteRazonSocial', 'Varchar', 'CntClientes/ClienteRazonSocial', ':')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "cntFacturas.ClienteRazonSocial" | translate }}:</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.CntClientes?.ClienteRazonSocial}} </mat-cell>
+        </ng-container>
+
+        <!-- Valor: Column -->
+        <ng-container matColumnDef="facturaValor">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'FacturaValor', 'Number', 'FacturaValor', ':')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "cntFacturas.FacturaValor" | translate }}:</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row" class="right">{{row.FacturaValor | currency:undefined:undefined:'1.2' }}</mat-cell>
+        </ng-container>
+
+        <!-- Valor No Gravado: Column -->
+        <ng-container matColumnDef="facturaValorNoGravado">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'FacturaValorNoGravado', 'Number', 'FacturaValorNoGravado', ':')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "cntFacturas.FacturaValorNoGravado" | translate }}:</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row" class="right">{{row.FacturaValorNoGravado | currency:undefined:undefined:'1.2' }}</mat-cell>
+        </ng-container>
+
+        <!-- Impuestos: Column -->
+        <ng-container matColumnDef="facturaImpuestos">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'FacturaImpuestos', 'Number', 'FacturaImpuestos', ':')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "cntFacturas.FacturaImpuestos" | translate }}:</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row" class="right">{{row.FacturaImpuestos | currency:undefined:undefined:'1.2' }}</mat-cell>
+        </ng-container>
+
+        <!-- Total: Column -->
+        <ng-container matColumnDef="facturaTotal">
+            <mat-header-cell *matHeaderCellDef disableClear>
+                <button mat-icon-button [matMenuTriggerFor]="menuSearch" (click)="onSelectColumn($event, 'FacturaTotal', 'Number', 'FacturaTotal', ':')">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <span mat-sort-header>{{ "cntFacturas.FacturaTotal" | translate }}:</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row" class="right">{{row.FacturaTotal | currency:undefined:undefined:'1.2' }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="expandedDetail">
+            <mat-cell *matCellDef="let row" [attr.colspan]="displayedColumns.length">
+                <mat-card-content>
+                    <cnt-facturamovimientos-table *ngIf="selectedRow === row" [masterRow]="selectedRow"></cnt-facturamovimientos-table>
+                </mat-card-content>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns" class="sticky"></mat-header-row>
+        <mat-row *matRowDef="let row; let even = even; let index = dataIndex; columns: displayedColumns; " 
+            [ngClass]="{'alternate-row-color': even, 'mat-row-select': row === selectedRow}"
+            class="element-row" 
+            [class.expanded]="selectedRow === row" 
+            (click)="onSelect($event, row, index);" 
+            (dblclick)="onSelectAndEdit($event, row, index);"></mat-row>
+        <mat-row *matRowDef="let detailRow; let detailEven = even; let detailIndex = dataIndex; columns: ['expandedDetail']" 
+            [@detailExpand]="detailRow == selectedRow && _expand ? 'expanded' : 'collapsed'" 
+            [ngClass]="{'alternate-row-color': detailEven}"
+            class="detalle-row" 
+            style="overflow: hidden"></mat-row>
+        <mat-menu #menuSearch>
+            <div mat-menu-item mat-filter-item [disableRipple]="true" class="menu-title">
+                {{  "cntFacturas." + selectedColumn.name | translate }}
+            </div>
+            <div mat-menu-item mat-filter-item [disableRipple]="true">
+                <mat-form-field (click)="$event.stopPropagation()">
+                <mat-select [panelClass]="'mat-elevation-z10'" placeholder="{{ 'CONDITIONS_LIST.conditions' | translate }}" [(value)]="searchCondition[selectedColumn.name]">
+                    <mat-option *ngFor="let condition of selectedColumn.filter" [value]="condition">{{condition.label}}</mat-option>
+                </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div mat-menu-item mat-filter-item [disableRipple]="true" [ngSwitch]="selectedColumn.type">
+                <mat-form-field (click)="$event.stopPropagation()" *ngSwitchCase="'Date'">
+                    <!--Date-->
+                    <input matInput 
+                        [matDatepicker]="menuSearchDate" 
+                        displayFormat="MMM DD/YYYY"
+                        placeholder="{{ 'CONDITIONS_LIST.value' | translate }}"
+                        [(ngModel)]="searchValue[selectedColumn.name]">
+                    <mat-datepicker-toggle matSuffix [for]="menuSearchDate"></mat-datepicker-toggle>
+                    <mat-datepicker #menuSearchDate></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field (click)="$event.stopPropagation()" *ngSwitchCase="'Boolean'">
+                    <!--Boolean-->
+                    <mat-select matInput type="text" [(value)]="searchValue[selectedColumn.name]"  placeholder="{{ 'CONDITIONS_LIST.value' | translate }}" >
+                        <mat-option [value]="true">{{ 'Main._activo' | translate }}</mat-option>
+                        <mat-option [value]="false">{{ 'Main._inactivo' | translate }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field (click)="$event.stopPropagation()" *ngSwitchDefault>
+                    <!--Number, Varchar-->
+                    <input matInput  *ngSwitchDefault
+                        placeholder="{{ 'CONDITIONS_LIST.value' | translate }}" 
+                        [(ngModel)]="searchValue[selectedColumn.name]">
+                </mat-form-field>
+            </div>
+
+            <div mat-menu-item mat-filter-item [disableRipple]="true">
+                <button mat-raised-button (click)="onClearColumn($event)">{{ 'CONDITIONS_LIST.clear' | translate }}</button>
+                <button mat-raised-button color="primary" (click)="onApplyFilter($event)">{{ 'CONDITIONS_LIST.search' | translate }}</button>
+            </div>
+        </mat-menu>
+    </mat-table>
+</div>    
+<mat-toolbar class="mat-toolbar-opc">
+    <mat-toolbar-row>
+        <mat-icon (click)="onAdd()" title="{{ 'Main._addRow' | translate }}">add</mat-icon>
+        <mat-icon (click)="onEdit()" title="{{ 'Main._editRow' | translate }}">edit</mat-icon>
+        <mat-icon (click)="onRefresh()" title="{{ 'Main._refreshTable' | translate }}">refresh</mat-icon>
+        <mat-icon (click)="onExportExcel($event)" title="{{ 'Main._exportCSV' | translate }}">save_alt</mat-icon>
+        <span class="example-spacer"></span>
+        <mat-paginator #paginator
+                class="paginator" 
+                [length]="resultsLength" 
+                [pageSize]="_pageSize" 
+                [pageSizeOptions]="[5, 10, 25, 100]">
+        </mat-paginator>
+        <div class="mat-paginator" *ngIf="paginator.length > paginator.pageSize">
+            <mat-label>{{ 'PAGINATOR.pageLabel' | translate }} </mat-label>
+            <mat-slider
+                min="0"
+                [max]="(paginator.length / paginator.pageSize).toFixed()"
+                [displayWith]="formatPageLabel"
+                step="1"
+                [(ngModel)]="pageIndex"
+                thumbLabel></mat-slider>
+        </div>
+        <div *ngIf="isLoadingResults" class="ml-2 row">
+            <mat-spinner [diameter]="30"></mat-spinner>
+            <span class="ml-2" style="font-size: 12px">Loading...</span>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
